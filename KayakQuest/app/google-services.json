@@ -15,7 +15,7 @@
       "oauth_client": [
         {
           "client_id": "450281371653-lcbbackfvasdf37g5r72is3ibibpgj12.apps.googleusercontent.com",
-          "client_type": 1,
+          "client_type": 3,
           "android_info": {
             "package_name": "com.example.kayakquest",
             "certificate_hash": "f5df9c3ac6613c0344baf0258fc9c6351fc65fb3"
