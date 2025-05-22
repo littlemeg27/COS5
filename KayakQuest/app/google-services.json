@@ -12,7 +12,20 @@
           "package_name": "com.example.kayakquest"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "450281371653-lcbbackfvasdf37g5r72is3ibibpgj12.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kayakquest",
+            "certificate_hash": "f5df9c3ac6613c0344baf0258fc9c6351fc65fb3"
+          }
+        },
+        {
+          "client_id": "450281371653-dsb3k14se5qp6kqbo74s6vu56f1s0js1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBEkqfRdVTPnCaynW8mnxwO2abgMn42_30"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "450281371653-dsb3k14se5qp6kqbo74s6vu56f1s0js1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

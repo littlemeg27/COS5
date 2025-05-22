@@ -13,17 +13,21 @@ import com.example.kayakquest.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.FirebaseApp;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity
+{
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         // Log Firebase initialization status
-        try {
+        try
+        {
             Log.d("MainActivity", "FirebaseApp initialized: " + FirebaseApp.getInstance().getName());
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             Log.e("MainActivity", "Firebase not initialized", e);
         }
 
@@ -32,18 +36,28 @@ public class MainActivity extends AppCompatActivity {
             Fragment selectedFragment = null;
             int itemId = item.getItemId();
 
-            if (itemId == R.id.nav_signin) {
+            if (itemId == R.id.nav_signin)
+            {
                 selectedFragment = new SignInFragment();
-            } else if (itemId == R.id.nav_map) {
+            }
+            else if (itemId == R.id.nav_map)
+            {
                 selectedFragment = new MapFragment();
-            } else if (itemId == R.id.nav_float_plan) {
+            }
+            else if (itemId == R.id.nav_float_plan)
+            {
                 selectedFragment = new FloatPlanFragment();
-            } else if (itemId == R.id.nav_weather) {
+            }
+            else if (itemId == R.id.nav_weather)
+            {
                 selectedFragment = new WeatherFragment();
-            } else if (itemId == R.id.nav_settings) {
+            }
+            else if (itemId == R.id.nav_settings)
+            {
                 selectedFragment = new SettingsFragment();
             }
-            if (selectedFragment != null) {
+            if (selectedFragment != null)
+            {
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, selectedFragment)
                         .commit();
@@ -51,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
-        if (savedInstanceState == null) {
+        if (savedInstanceState == null)
+        {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, new SignInFragment())
                     .commit();

@@ -2,6 +2,7 @@ package com.example.kayakquest.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.example.kayakquest.R;
+import com.google.firebase.FirebaseApp;
 
 public class SignInFragment extends Fragment
 {
@@ -25,21 +27,41 @@ public class SignInFragment extends Fragment
     private GoogleSignInClient mGoogleSignInClient;
 
     @Override
+    public void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        try
+        {
+            Log.d("SignInFragment", "FirebaseApp initialized: " + FirebaseApp.getInstance().getName());
+        }
+        catch (Exception e)
+        {
+            Log.e("SignInFragment", "Firebase not initialized", e);
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_sign_in, container, false);
 
-        // Initialize Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
+        try
+        {
+            mAuth = FirebaseAuth.getInstance();
+        }
+        catch (IllegalStateException e)
+        {
+            Log.e("SignInFragment", "FirebaseAuth not initialized", e);
+            Toast.makeText(getContext(), "Firebase not initialized", Toast.LENGTH_LONG).show();
+            return view;
+        }
 
-        // Configure Google Sign-In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(requireActivity(), gso);
 
-        // Set up sign-in button
         Button signInButton = view.findViewById(R.id.sign_in_button);
         signInButton.setOnClickListener(v -> signIn());
 
@@ -56,7 +78,8 @@ public class SignInFragment extends Fragment
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_SIGN_IN) {
+        if (requestCode == RC_SIGN_IN)
+        {
             GoogleSignIn.getSignedInAccountFromIntent(data)
                     .addOnSuccessListener(account ->
                     {
