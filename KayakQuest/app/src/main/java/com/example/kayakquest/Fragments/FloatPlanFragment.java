@@ -18,9 +18,9 @@ public class FloatPlanFragment extends Fragment
     {
         View view = inflater.inflate(R.layout.fragment_float_plan, container, false);
 
-        EditText etName = view.findViewById(R.id.et_name);
-        EditText etDestination = view.findViewById(R.id.et_destination);
-        EditText etStartTime = view.findViewById(R.id.et_start_time);
+        EditText etName = view.findViewById(R.id.name);
+        EditText etDestination = view.findViewById(R.id.destination);
+        EditText etStartTime = view.findViewById(R.id.start_time);
         Button btnSubmit = view.findViewById(R.id.btn_submit);
 
         btnSubmit.setOnClickListener(v ->

@@ -6,27 +6,315 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/et_name"
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Paddler Name"/>
+        android:text="@string/kayaker_information"
+        android:textColor="#666666"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:paddingHorizontal="8dp" />
 
     <EditText
-        android:id="@+id/et_destination"
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Destination"/>
+        android:hint="@string/paddler_name"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gender"
+        android:textStyle="bold"
+        android:textColor="#666666"
+        android:textSize="16sp"
+        android:paddingHorizontal="8dp" />
+
+    <Spinner
+        android:id="@+id/gender_dropdown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:prompt="@string/gender_dropdown" />
 
     <EditText
-        android:id="@+id/et_start_time"
+        android:id="@+id/phone_number_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Start Time"/>
+        android:hint="@string/phone_number"
+        android:inputType="phone"
+        android:digits="0123456789"
+        android:maxLength="15"
+        android:imeOptions="actionDone" />
+
+    <EditText
+        android:id="@+id/age_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/age"
+        android:inputType="number"
+        android:digits="0123456789"
+        android:maxLength="3"
+        android:imeOptions="actionDone" />
+
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/address"/>
+
+    <EditText
+        android:id="@+id/city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/city"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/state"
+        android:textStyle="bold"
+        android:textColor="#666666"
+        android:textSize="16sp"
+        android:paddingHorizontal="8dp" />
+
+    <Spinner
+        android:id="@+id/state_dropdown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:prompt="@string/state_dropdown" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/emergency_information"
+        android:textStyle="bold"
+        android:textColor="#666666"
+        android:textSize="25sp"
+        android:paddingHorizontal="8dp" />
+
+    <EditText
+        android:id="@+id/emergency_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/emergency_contact"/>
+
+    <EditText
+        android:id="@+id/emergency_phone_number_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/emergency_phone_number"
+        android:inputType="phone"
+        android:digits="0123456789"
+        android:maxLength="15"
+        android:imeOptions="actionDone" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/description_of_kayak"
+        android:textStyle="bold"
+        android:textColor="#666666"
+        android:textSize="25sp"
+        android:paddingHorizontal="8dp" />
+
+    <EditText
+        android:id="@+id/kayak_make"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/kayak_make"/>
+
+    <EditText
+        android:id="@+id/kayak_model"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/kayak_model"/>
+
+    <EditText
+        android:id="@+id/kayak_length"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/length"
+        android:inputType="number"
+        android:digits="0123456789"
+        android:maxLength="3"
+        android:imeOptions="actionDone" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/kayak_color"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <Spinner
+        android:id="@+id/kayak_dropdown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:prompt="@string/kayak_dropdown" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/list_of_safety_equipment_on_board"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/safety_text_area"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:hint="@string/enter_notes_or_comments"
+        android:inputType="textMultiLine"
+        android:gravity="top|start"
+        android:minLines="5"
+        android:maxLines="10"
+        android:scrollbars="vertical"
+        android:background="@android:drawable/edit_text"
+        android:padding="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/vehicle_information"
+        android:textColor="#666666"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:paddingHorizontal="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/vehicle_make"
+        android:textColor="#666666"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:paddingHorizontal="8dp" />
+
+    <Spinner
+        android:id="@+id/car_make_dropdown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:prompt="@string/car_make_dropdown" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/vehicle_model"
+        android:textColor="#666666"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:paddingHorizontal="8dp" />
+
+    <Spinner
+        android:id="@+id/car_color_dropdown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:prompt="@string/car_color_dropdown" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/trip_details"
+        android:textColor="#666666"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:paddingHorizontal="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select_date"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <DatePicker
+        android:id="@+id/date_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false" />
+
+    <EditText
+        android:id="@+id/departure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/put_in_location"/>
+
+    <!-- Time Picker -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/estimated_leave_time"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Time Picker -->
+    <TimePicker
+        android:id="@+id/start_time_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner" />
+
+    <EditText
+        android:id="@+id/arrival"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/take_out_location"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/estimated_time_of_return"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <TimePicker
+        android:id="@+id/end_time_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/other_trip_details"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/text_area"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:hint="@string/enter_notes_or_comments"
+        android:inputType="textMultiLine"
+        android:gravity="top|start"
+        android:minLines="5"
+        android:maxLines="10"
+        android:scrollbars="vertical"
+        android:background="@android:drawable/edit_text"
+        android:padding="10dp" />
 
     <Button
         android:id="@+id/btn_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit"/>
+        android:text="@string/submit"/>
+
 </LinearLayout>
+
