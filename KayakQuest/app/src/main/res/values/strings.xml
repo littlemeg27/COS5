@@ -1,150 +1,5 @@
 <resources>
-    <string name="app_name">Kayak Quest</string>
     <string name="default_web_client_id">450281371653-dsb3k14se5qp6kqbo74s6vu56f1s0js1.apps.googleusercontent.com</string>
-
-    <string name="gender_dropdown">Select an Gender</string>
-    <string-array name="dropdown_gender">
-        <item>Male</item>
-        <item>Female</item>
-    </string-array>
-
-    <string name="state_dropdown">Select an State</string>
-    <string-array name="dropdown_states">
-        <item>AL</item>
-        <item>AK</item>
-        <item>AZ</item>
-        <item>AR</item>
-        <item>AS</item>
-        <item>CA</item>
-        <item>CO</item>
-        <item>CT</item>
-        <item>DE</item>
-        <item>DC</item>
-        <item>FL</item>
-        <item>GA</item>
-        <item>GU</item>
-        <item>HI</item>
-        <item>ID</item>
-        <item>IL</item>
-        <item>IN</item>
-        <item>IA</item>
-        <item>KS</item>
-        <item>KY</item>
-        <item>LA</item>
-        <item>ME</item>
-        <item>MD</item>
-        <item>MA</item>
-        <item>MI</item>
-        <item>MN</item>
-        <item>MS</item>
-        <item>MO</item>
-        <item>MT</item>
-        <item>NE</item>
-        <item>NV</item>
-        <item>NH</item>
-        <item>NJ</item>
-        <item>NM</item>
-        <item>NY</item>
-        <item>NC</item>
-        <item>ND</item>
-        <item>MP</item>
-        <item>OH</item>
-        <item>OK</item>
-        <item>OR</item>
-        <item>PA</item>
-        <item>PR</item>
-        <item>RI</item>
-        <item>SC</item>
-        <item>SD</item>
-        <item>TN</item>
-        <item>TX</item>
-        <item>TT</item>
-        <item>UT</item>
-        <item>VT</item>
-        <item>VA</item>
-        <item>VI</item>
-        <item>WA</item>
-        <item>WV</item>
-        <item>WI</item>
-        <item>WY</item>
-    </string-array>
-
-    <string name="kayak_dropdown">Select an Color</string>
-    <string-array name="dropdown_kayak">
-        <item>Red</item>
-        <item>Orange</item>
-        <item>Yellow</item>
-        <item>White</item>
-        <item>Blue</item>
-        <item>Green</item>
-        <item>Sunburst</item>
-        <item>Pink</item>
-        <item>Tan</item>
-        <item>Grey</item>
-        <item>Black</item>
-        <item>Purple</item>
-    </string-array>
-
-    <string name="car_make_dropdown">Select an Color</string>
-    <string-array name="dropdown_car_make">
-        <item>Acura</item>
-        <item>Alfa Romeo</item>
-        <item>Aston Martin</item>
-        <item>Audi</item>
-        <item>Bentley</item>
-        <item>BMW</item>
-        <item>Buick</item>
-        <item>Cadillac</item>
-        <item>Chevrolet</item>
-        <item>Chrysler</item>
-        <item>Citroën</item>
-        <item>Dacia</item>
-        <item>Dodge</item>
-        <item>Ferrari</item>
-        <item>Fiat</item>
-        <item>Ford</item>
-        <item>GMC</item>
-        <item>Honda</item>
-        <item>Hummer</item>
-        <item>Hyundai</item>
-        <item>Infiniti</item>
-        <item>Isuzu</item>
-        <item>Jaguar</item>
-        <item>Jeep</item>
-        <item>Kia</item>
-        <item>Lamborghini</item>
-        <item>Land Rover</item>
-        <item>Lexus</item>
-        <item>Lincoln</item>
-        <item>Lotus</item>
-        <item>Mazda</item>
-        <item>Mercedes-Benz</item>
-        <item>Mercury</item>
-        <item>Mini</item>
-        <item>Mitsubishi</item>
-        <item>Nissan</item>
-        <item>Peugeot</item>
-        <item>Pontiac</item>
-        <item>Porsche</item>
-        <item>Ram</item>
-        <item>Renault</item>
-        <item>Saab</item>
-        <item>Saturn</item>
-        <item>Scion</item>
-        <item>Seat</item>
-        <item>Skoda</item>
-        <item>Smart</item>
-        <item>SsangYong</item>
-        <item>Subaru</item>
-        <item>Suzuki</item>
-        <item>Tesla</item>
-        <item>Toyota</item>
-        <item>Volkswagen</item>
-        <item>Volvo</item>
-        <item>Wiesmann</item>
-    </string-array>
-
-    <string name="car_color_dropdown">Select an Color</string>
     <string name="enter_notes_or_comments">Enter notes or comments</string>
     <string name="submit">Submit</string>
     <string name="other_trip_details">Other Trip Details:</string>
@@ -153,12 +8,12 @@
     <string name="estimated_leave_time">Estimated Leave Time:</string>
     <string name="put_in_location">Put-In Location</string>
     <string name="select_date">Select Date</string>
-    <string name="trip_details">Trip Details:</string>
+    <string name="trip_notes">Trip Details:</string>
     <string name="vehicle_model">Vehicle Model:</string>
     <string name="vehicle_make">Vehicle Make:</string>
     <string name="vehicle_information">Vehicle Information:</string>
-    <string name="list_of_safety_equipment_on_board">List of Safety Equipment on Board:</string>
-    <string name="length">Length</string>
+    <string name="safety_equipment_notes">Safety Equipment on Board:</string>
+    <string name="length">Length (ft)</string>
     <string name="kayak_make">Kayak Make</string>
     <string name="kayak_model">Kayak Model</string>
     <string name="description_of_kayak">Description of Kayak</string>
@@ -174,18 +29,5 @@
     <string name="kayaker_information">Kayaker Information</string>
     <string name="gender">Gender</string>
     <string name="kayak_color">Kayak Color</string>
-
-    <string-array name="dropdown_car_color">
-        <item>Red</item>
-        <item>Orange</item>
-        <item>Yellow</item>
-        <item>White</item>
-        <item>Blue</item>
-        <item>Green</item>
-        <item>Sunburst</item>
-        <item>Pink</item>
-        <item>Tan</item>
-        <item>Grey</item>
-        <item>Black</item>
-    </string-array>
+    <string name="app_name">Kayak Quest</string>
 </resources>

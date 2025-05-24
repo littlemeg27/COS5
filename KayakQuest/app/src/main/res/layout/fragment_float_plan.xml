@@ -1,320 +1,572 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/kayaker_information"
-        android:textColor="#666666"
-        android:textStyle="bold"
-        android:textSize="25sp"
-        android:paddingHorizontal="8dp" />
-
-    <EditText
-        android:id="@+id/name"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/paddler_name"/>
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/gender"
-        android:textStyle="bold"
-        android:textColor="#666666"
-        android:textSize="16sp"
-        android:paddingHorizontal="8dp" />
+        <!-- Kayaker Information -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/kayaker_information"
+            android:textColor="#FF333333"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:paddingHorizontal="8dp" />
 
-    <Spinner
-        android:id="@+id/gender_dropdown"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"
-        android:prompt="@string/gender_dropdown" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            app:hintTextColor="#FF666666"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
-    <EditText
-        android:id="@+id/phone_number_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/phone_number"
-        android:inputType="phone"
-        android:digits="0123456789"
-        android:maxLength="15"
-        android:imeOptions="actionDone" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:hint="@string/paddler_name"
+                android:inputType="textPersonName"
+                android:autofillHints="name"
+                android:textColor="#FF000000"
+                android:textColorHint="#FF666666" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/age_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/age"
-        android:inputType="number"
-        android:digits="0123456789"
-        android:maxLength="3"
-        android:imeOptions="actionDone" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gender"
+            android:textStyle="bold"
+            android:textColor="#FF333333"
+            android:textSize="16sp"
+            android:paddingHorizontal="8dp"
+            android:layout_marginTop="16dp" />
 
-    <EditText
-        android:id="@+id/address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/address"/>
+        <Spinner
+            android:id="@+id/gender_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            android:prompt="@string/gender_dropdown" />
 
-    <EditText
-        android:id="@+id/city"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/city"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            app:hintTextColor="#FF666666"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/state"
-        android:textStyle="bold"
-        android:textColor="#666666"
-        android:textSize="16sp"
-        android:paddingHorizontal="8dp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phone_number_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:hint="@string/phone_number"
+                android:inputType="phone"
+                android:digits="0123456789"
+                android:maxLength="15"
+                android:autofillHints="phone"
+                android:imeOptions="actionDone"
+                android:textColor="#FF000000"
+                android:textColorHint="#FF666666" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Spinner
-        android:id="@+id/state_dropdown"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"
-        android:prompt="@string/state_dropdown" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            app:hintTextColor="#FF666666"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/emergency_information"
-        android:textStyle="bold"
-        android:textColor="#666666"
-        android:textSize="25sp"
-        android:paddingHorizontal="8dp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/age_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:hint="@string/age"
+                android:inputType="number"
+                android:digits="0123456789"
+                android:maxLength="3"
+                android:autofillHints="birthDateYear"
+                android:imeOptions="actionDone"
+                android:textColor="#FF000000"
+                android:textColorHint="#FF666666" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/emergency_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/emergency_contact"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            app:hintTextColor="#FF666666"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
-    <EditText
-        android:id="@+id/emergency_phone_number_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/emergency_phone_number"
-        android:inputType="phone"
-        android:digits="0123456789"
-        android:maxLength="15"
-        android:imeOptions="actionDone" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:hint="@string/address"
+                android:inputType="textPostalAddress"
+                android:autofillHints="postalAddress"
+                android:textColor="#FF000000"
+                android:textColorHint="#FF666666" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/description_of_kayak"
-        android:textStyle="bold"
-        android:textColor="#666666"
-        android:textSize="25sp"
-        android:paddingHorizontal="8dp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            app:hintTextColor="#FF666666"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
-    <EditText
-        android:id="@+id/kayak_make"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/kayak_make"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:hint="@string/city"
+                android:inputType="textPostalAddress"
+                android:autofillHints="addressCity"
+                android:textColor="#FF000000"
+                android:textColorHint="#FF666666" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/kayak_model"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/kayak_model"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/state"
+            android:textStyle="bold"
+            android:textColor="#FF333333"
+            android:textSize="16sp"
+            android:paddingHorizontal="8dp"
+            android:layout_marginTop="16dp" />
 
-    <EditText
-        android:id="@+id/kayak_length"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/length"
-        android:inputType="number"
-        android:digits="0123456789"
-        android:maxLength="3"
-        android:imeOptions="actionDone" />
+        <Spinner
+            android:id="@+id/state_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            android:prompt="@string/state_dropdown" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/kayak_color"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp" />
+        <!-- Separator -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FFCCCCCC"
+            android:layout_marginVertical="16dp" />
 
-    <Spinner
-        android:id="@+id/kayak_dropdown"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"
-        android:prompt="@string/kayak_dropdown" />
+        <!-- Emergency Information -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/emergency_information"
+            android:textStyle="bold"
+            android:textColor="#FF333333"
+            android:textSize="25sp"
+            android:paddingHorizontal="8dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/list_of_safety_equipment_on_board"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            app:hintTextColor="#FF666666"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
-    <EditText
-        android:id="@+id/safety_text_area"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:hint="@string/enter_notes_or_comments"
-        android:inputType="textMultiLine"
-        android:gravity="top|start"
-        android:minLines="5"
-        android:maxLines="10"
-        android:scrollbars="vertical"
-        android:background="@android:drawable/edit_text"
-        android:padding="10dp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emergency_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:hint="@string/emergency_contact"
+                android:inputType="textPersonName"
+                android:autofillHints="name"
+                android:textColor="#FF000000"
+                android:textColorHint="#FF666666" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/vehicle_information"
-        android:textColor="#666666"
-        android:textStyle="bold"
-        android:textSize="25sp"
-        android:paddingHorizontal="8dp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            app:hintTextColor="#FF666666"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/vehicle_make"
-        android:textColor="#666666"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:paddingHorizontal="8dp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emergency_phone_number_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:hint="@string/emergency_phone_number"
+                android:inputType="phone"
+                android:digits="0123456789"
+                android:maxLength="15"
+                android:autofillHints="phone"
+                android:imeOptions="actionDone"
+                android:textColor="#FF000000"
+                android:textColorHint="#FF666666" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Spinner
-        android:id="@+id/car_make_dropdown"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"
-        android:prompt="@string/car_make_dropdown" />
+        <!-- Separator -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FFCCCCCC"
+            android:layout_marginVertical="16dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/vehicle_model"
-        android:textColor="#666666"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:paddingHorizontal="8dp" />
+        <!-- Kayak Description -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/description_of_kayak"
+            android:textStyle="bold"
+            android:textColor="#FF333333"
+            android:textSize="25sp"
+            android:paddingHorizontal="8dp" />
 
-    <Spinner
-        android:id="@+id/car_color_dropdown"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"
-        android:prompt="@string/car_color_dropdown" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            app:hintTextColor="#FF666666"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/trip_details"
-        android:textColor="#666666"
-        android:textStyle="bold"
-        android:textSize="25sp"
-        android:paddingHorizontal="8dp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/kayak_make"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:hint="@string/kayak_make"
+                android:inputType="text"
+                android:autofillHints="deviceModel"
+                android:textColor="#FF000000"
+                android:textColorHint="#FF666666" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/select_date"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            app:hintTextColor="#FF666666"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
-    <DatePicker
-        android:id="@+id/date_picker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:datePickerMode="spinner"
-        android:calendarViewShown="false" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/kayak_model"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:hint="@string/kayak_model"
+                android:inputType="text"
+                android:autofillHints="deviceModel"
+                android:textColor="#FF000000"
+                android:textColorHint="#FF666666" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/departure"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/put_in_location"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            app:hintTextColor="#FF666666"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
-    <!-- Time Picker -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/estimated_leave_time"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/kayak_length"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:hint="@string/length"
+                android:inputType="number"
+                android:digits="0123456789"
+                android:maxLength="3"
+                android:autofillHints="quantity"
+                android:imeOptions="actionDone"
+                android:textColor="#FF000000"
+                android:textColorHint="#FF666666" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Time Picker -->
-    <TimePicker
-        android:id="@+id/start_time_picker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:timePickerMode="spinner" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/kayak_color"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FF333333"
+            android:layout_marginBottom="8dp" />
 
-    <EditText
-        android:id="@+id/arrival"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/take_out_location"/>
+        <Spinner
+            android:id="@+id/kayak_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            android:prompt="@string/kayak_dropdown" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/estimated_time_of_return"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/safety_equipment_notes"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FF333333"
+            android:layout_marginBottom="8dp" />
 
-    <TimePicker
-        android:id="@+id/end_time_picker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:timePickerMode="spinner" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            app:hintTextColor="#FF666666"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/other_trip_details"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="8dp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/safety_text_area"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:hint="@string/safety_equipment_notes"
+                android:inputType="textMultiLine"
+                android:gravity="top|start"
+                android:minLines="5"
+                android:maxLines="10"
+                android:scrollbars="vertical"
+                android:padding="10dp"
+                android:autofillHints="notes"
+                android:textColor="#FF000000"
+                android:textColorHint="#FF666666" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/text_area"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:hint="@string/enter_notes_or_comments"
-        android:inputType="textMultiLine"
-        android:gravity="top|start"
-        android:minLines="5"
-        android:maxLines="10"
-        android:scrollbars="vertical"
-        android:background="@android:drawable/edit_text"
-        android:padding="10dp" />
+        <!-- Separator -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FFCCCCCC"
+            android:layout_marginVertical="16dp" />
 
-    <Button
-        android:id="@+id/btn_submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/submit"/>
+        <!-- Vehicle Information -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vehicle_information"
+            android:textColor="#FF333333"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:paddingHorizontal="8dp" />
 
-</LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vehicle_make"
+            android:textColor="#FF333333"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingHorizontal="8dp" />
 
+        <Spinner
+            android:id="@+id/car_make_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            android:prompt="@string/car_make_dropdown" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vehicle_model"
+            android:textColor="#FF333333"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingHorizontal="8dp" />
+
+        <Spinner
+            android:id="@+id/car_color_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            android:prompt="@string/car_color_dropdown" />
+
+        <!-- Separator -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FFCCCCCC"
+            android:layout_marginVertical="16dp" />
+
+        <!-- Trip Details -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/trip_notes"
+            android:textColor="#FF333333"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:paddingHorizontal="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_date"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FF333333"
+            android:layout_marginBottom="8dp" />
+
+        <DatePicker
+            android:id="@+id/date_picker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            app:hintTextColor="#FF666666"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/departure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:hint="@string/put_in_location"
+                android:inputType="textPostalAddress"
+                android:autofillHints="addressLocality"
+                android:textColor="#FF000000"
+                android:textColorHint="#FF666666" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/estimated_leave_time"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FF333333"
+            android:layout_marginBottom="8dp" />
+
+        <TimePicker
+            android:id="@+id/start_time_picker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:timePickerMode="spinner" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            app:hintTextColor="#FF666666"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/arrival"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:hint="@string/take_out_location"
+                android:inputType="textPostalAddress"
+                android:autofillHints="addressLocality"
+                android:textColor="#FF000000"
+                android:textColorHint="#FF666666" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/estimated_time_of_return"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FF333333"
+            android:layout_marginBottom="8dp" />
+
+        <TimePicker
+            android:id="@+id/end_time_picker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:timePickerMode="spinner" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/other_trip_details"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FF333333"
+            android:layout_marginBottom="8dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            app:hintTextColor="#FF666666"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/text_area"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:hint="@string/trip_notes"
+                android:inputType="textMultiLine"
+                android:gravity="top|start"
+                android:minLines="5"
+                android:maxLines="10"
+                android:scrollbars="vertical"
+                android:padding="10dp"
+                android:autofillHints="notes"
+                android:textColor="#FF000000"
+                android:textColorHint="#FF666666" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Separator -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FFCCCCCC"
+            android:layout_marginVertical="16dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:padding="12dp"
+            android:text="@string/submit"
+            style="@style/Widget.Material3.Button"
+            app:backgroundTint="#FF6200EE"
+            android:textColor="#FFFFFFFF" />
+
+    </LinearLayout>
+</ScrollView>

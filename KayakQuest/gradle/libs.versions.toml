@@ -16,6 +16,7 @@ junit = "4.13.2"
 ext-junit = "1.1.5"
 espresso = "3.5.1"
 googleServices = "4.4.2"
+recyclerview = "1.3.2"
 itext = "7.2.5"
 
 [libraries]
@@ -26,7 +27,6 @@ constraintlayout = { module = "androidx.constraintlayout:constraintlayout", vers
 fragment = { module = "androidx.fragment:fragment", version.ref = "fragment" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase" }
 firebase-auth = { module = "com.google.firebase:firebase-auth" }
-irebase-firestore = { module = "com.google.firebase:firebase-firestore", version.ref = "firebase-firestore" }
 firebase-storage = { module = "com.google.firebase:firebase-storage", version.ref = "firebase-storage" }
 play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "play-services-auth" }
 play-services-maps = { module = "com.google.android.gms:play-services-maps", version.ref = "play-services-maps" }
@@ -38,6 +38,8 @@ junit = { module = "junit:junit", version.ref = "junit" }
 ext-junit = { module = "androidx.test.ext:junit", version.ref = "ext-junit" }
 espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
 itext = { module = "com.itextpdf:itext7-core", version.ref = "itext" }
+firebase-firestore = { module = "com.google.firebase:firebase-firestore", version.ref = "firebase-firestore" }
+recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
