@@ -12,16 +12,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import com.example.kayakquest.Operations.FloatPlan;
 import com.example.kayakquest.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -88,7 +83,6 @@ public class FloatPlanFragment extends Fragment
                 requireContext(), R.array.dropdown_car_make, android.R.layout.simple_spinner_dropdown_item);
         carMakeDropdown.setAdapter(vehicleMakeAdapter);
 
-        // Submit button
         btnSubmit.setOnClickListener(v ->
         {
             if (FirebaseAuth.getInstance().getCurrentUser() == null)
@@ -104,7 +98,7 @@ public class FloatPlanFragment extends Fragment
             calendar.set(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
             String departureDate = dateFormat.format(calendar.getTime());
 
-            KayakFloatPlan floatPlan = new KayakFloatPlan(
+            FloatPlan floatPlan = new FloatPlan(
                     name.getText().toString(),
                     genderDropdown.getSelectedItem().toString(),
                     phoneNumberInput.getText().toString(),
@@ -172,7 +166,7 @@ public class FloatPlanFragment extends Fragment
         }
     }
 
-    private void createFloatPlanPdf(KayakFloatPlan floatPlan, String outputPath)
+    private void createFloatPlanPdf(FloatPlan floatPlan, String outputPath)
     {
         try
         {
@@ -213,7 +207,7 @@ public class FloatPlanFragment extends Fragment
         void onComplete(String downloadUrl);
     }
 
-    private void uploadFloatPlanPdf(KayakFloatPlan floatPlan, File pdfFile, UploadCallback callback)
+    private void uploadFloatPlanPdf(FloatPlan floatPlan, File pdfFile, UploadCallback callback)
     {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() == null)
@@ -243,7 +237,7 @@ public class FloatPlanFragment extends Fragment
         void onComplete(String floatPlanId);
     }
 
-    private void saveFloatPlanMetadata(KayakFloatPlan floatPlan, MetadataCallback callback)
+    private void saveFloatPlanMetadata(FloatPlan floatPlan, MetadataCallback callback)
     {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("float_plans")
