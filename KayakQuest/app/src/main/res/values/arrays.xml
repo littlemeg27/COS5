@@ -1,13 +1,15 @@
 <resources>
     <!-- Gender Information -->
-    <string name="gender_dropdown">Select an Gender</string>
+    <string name="gender_dropdown">Select Gender</string>
     <string-array name="dropdown_gender">
         <item>Male</item>
         <item>Female</item>
+        <item>Other</item>
+        <item>Prefer not to say</item>
     </string-array>
 
     <!-- State Information -->
-    <string name="state_dropdown">Select an State</string>
+    <string name="state_dropdown">Select State</string>
     <string-array name="dropdown_states">
         <item>AL</item>
         <item>AK</item>
@@ -68,8 +70,8 @@
         <item>WY</item>
     </string-array>
 
-    <!-- Kayaker Color Information -->
-    <string name="kayak_dropdown">Select an Color</string>
+    <!-- Kayak Color Information -->
+    <string name="kayak_dropdown">Select Kayak Color</string>
     <string-array name="dropdown_kayak">
         <item>Red</item>
         <item>Orange</item>
@@ -77,7 +79,6 @@
         <item>White</item>
         <item>Blue</item>
         <item>Green</item>
-        <item>Sunburst</item>
         <item>Pink</item>
         <item>Tan</item>
         <item>Grey</item>
@@ -86,7 +87,7 @@
     </string-array>
 
     <!-- Car Make Information -->
-    <string name="car_make_dropdown">Select an Car</string>
+    <string name="car_make_dropdown">Select Vehicle Make</string>
     <string-array name="dropdown_car_make">
         <item>Acura</item>
         <item>Alfa Romeo</item>
@@ -146,7 +147,7 @@
     </string-array>
 
     <!-- Car Color Information -->
-    <string name="car_color_dropdown">Select an Color</string>
+    <string name="car_color_dropdown">Select Vehicle Color</string>
     <string-array name="dropdown_car_color">
         <item>Red</item>
         <item>Orange</item>
@@ -154,7 +155,7 @@
         <item>White</item>
         <item>Blue</item>
         <item>Green</item>
-        <item>Sunburst</item>
+        <item>Silver</item>
         <item>Pink</item>
         <item>Tan</item>
         <item>Grey</item>

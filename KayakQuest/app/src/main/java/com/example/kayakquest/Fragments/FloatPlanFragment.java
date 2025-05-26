@@ -12,11 +12,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import com.example.kayakquest.Operations.FloatPlan;
 import com.example.kayakquest.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -29,9 +34,9 @@ import java.util.Locale;
 public class FloatPlanFragment extends Fragment
 {
     private TextInputEditText name, phoneNumberInput, ageInput, address, city, emergencyName,
-            emergencyPhoneNumberInput, kayakMake, kayakModel, kayakLength, safetyEquipmentNotes,
-            vehicleModel, departure, arrival, tripNotes;
-    private android.widget.Spinner genderDropdown, stateDropdown, kayakColorDropdown, carMakeDropdown;
+            emergencyPhoneNumberInput, kayakMake, kayakModel, kayakLength, safetyTextArea,
+            departure, arrival, textArea;
+    private android.widget.Spinner genderDropdown, stateDropdown, kayakColorDropdown, carMakeDropdown, carColorDropdown;
     private DatePicker datePicker;
     private TimePicker startTimePicker, endTimePicker;
     private MaterialButton btnSubmit;
@@ -55,15 +60,15 @@ public class FloatPlanFragment extends Fragment
         kayakModel = view.findViewById(R.id.kayak_model);
         kayakLength = view.findViewById(R.id.kayak_length);
         kayakColorDropdown = view.findViewById(R.id.kayak_dropdown);
-        safetyEquipmentNotes = view.findViewById(R.id.safety_equipment_notes);
-        carMakeDropdown = view.findViewById(R.id.car_make_dropdown);
-        vehicleModel = view.findViewById(R.id.vehicle_model);
+        safetyTextArea = view.findViewById(R.id.safety_text_area);
+        carMakeDropdown = view.findById(R.id.car_make_dropdown);
+        carColorDropdown = view.findViewById(R.id.car_color_dropdown);
         datePicker = view.findViewById(R.id.date_picker);
         departure = view.findViewById(R.id.departure);
         startTimePicker = view.findViewById(R.id.start_time_picker);
         arrival = view.findViewById(R.id.arrival);
         endTimePicker = view.findViewById(R.id.end_time_picker);
-        tripNotes = view.findViewById(R.id.trip_notes);
+        textArea = view.findViewById(R.id.text_area);
         btnSubmit = view.findViewById(R.id.btn_submit);
 
         // Setup spinners
@@ -83,69 +88,71 @@ public class FloatPlanFragment extends Fragment
                 requireContext(), R.array.dropdown_car_make, android.R.layout.simple_spinner_dropdown_item);
         carMakeDropdown.setAdapter(vehicleMakeAdapter);
 
-        btnSubmit.setOnClickListener(v ->
-        {
-            if (FirebaseAuth.getInstance().getCurrentUser() == null)
-            {
+        ArrayAdapter<CharSequence> vehicleColorAdapter = ArrayAdapter.createFromResource(
+                requireContext(), R.array.dropdown_car_color, android.R.layout.simple_spinner_dropdown_item);
+        carColorDropdown.setAdapter(vehicleColorAdapter);
+
+        btnSubmit.setOnClickListener(v -> {
+            if (FirebaseAuth.getInstance().getCurrentUser() == null) {
                 Toast.makeText(requireContext(), "Please sign in first", Toast.LENGTH_SHORT).show();
                 NavController navController = Navigation.findNavController(v);
                 navController.navigate(R.id.action_floatPlanFragment_to_signInFragment);
                 return;
             }
 
+            // Input validation
+            if (name.getText() == null || name.getText().toString().trim().isEmpty()) {
+                Toast.makeText(requireContext(), "Name is required", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Format date
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
             Calendar calendar = Calendar.getInstance();
             calendar.set(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
             String departureDate = dateFormat.format(calendar.getTime());
 
+            // Create float plan with null checks
             FloatPlan floatPlan = new FloatPlan(
-                    name.getText().toString(),
-                    genderDropdown.getSelectedItem().toString(),
-                    phoneNumberInput.getText().toString(),
-                    parseIntOrZero(ageInput.getText().toString()),
-                    address.getText().toString(),
-                    city.getText().toString(),
-                    stateDropdown.getSelectedItem().toString(),
-                    emergencyName.getText().toString(),
-                    emergencyPhoneNumberInput.getText().toString(),
-                    kayakMake.getText().toString(),
-                    kayakModel.getText().toString(),
-                    kayakLength.getText().toString(),
-                    kayakColorDropdown.getSelectedItem().toString(),
-                    safetyEquipmentNotes.getText().toString(),
-                    carMakeDropdown.getSelectedItem().toString(),
-                    vehicleModel.getText().toString(),
+                    name.getText() != null ? name.getText().toString() : "",
+                    genderDropdown.getSelectedItem() != null ? genderDropdown.getSelectedItem().toString() : "",
+                    phoneNumberInput.getText() != null ? phoneNumberInput.getText().toString() : "",
+                    parseIntOrZero(ageInput.getText() != null ? ageInput.getText().toString() : ""),
+                    address.getText() != null ? address.getText().toString() : "",
+                    city.getText() != null ? city.getText().toString() : "",
+                    stateDropdown.getSelectedItem() != null ? stateDropdown.getSelectedItem().toString() : "",
+                    emergencyName.getText() != null ? emergencyName.getText().toString() : "",
+                    emergencyPhoneNumberInput.getText() != null ? emergencyPhoneNumberInput.getText().toString() : "",
+                    kayakMake.getText() != null ? kayakMake.getText().toString() : "",
+                    kayakModel.getText() != null ? kayakModel.getText().toString() : "",
+                    kayakLength.getText() != null ? kayakLength.getText().toString() : "",
+                    kayakColorDropdown.getSelectedItem() != null ? kayakColorDropdown.getSelectedItem().toString() : "",
+                    safetyTextArea.getText() != null ? safetyTextArea.getText().toString() : "",
+                    carMakeDropdown.getSelectedItem() != null ? carMakeDropdown.getSelectedItem().toString() : "",
+                    carColorDropdown.getSelectedItem() != null ? carColorDropdown.getSelectedItem().toString() : "",
                     departureDate,
                     String.format(Locale.US, "%02d:%02d", startTimePicker.getHour(), startTimePicker.getMinute()),
-                    departure.getText().toString(),
-                    arrival.getText().toString(),
+                    departure.getText() != null ? departure.getText().toString() : "",
+                    arrival.getText() != null ? arrival.getText().toString() : "",
                     String.format(Locale.US, "%02d:%02d", endTimePicker.getHour(), endTimePicker.getMinute()),
-                    tripNotes.getText().toString(),
+                    textArea.getText() != null ? textArea.getText().toString() : "",
                     FirebaseAuth.getInstance().getCurrentUser().getUid(),
                     null
             );
 
             File pdfFile = new File(requireContext().getFilesDir(), "float_plan_" + System.currentTimeMillis() + ".pdf");
             createFloatPlanPdf(floatPlan, pdfFile.getAbsolutePath());
-            uploadFloatPlanPdf(floatPlan, pdfFile, downloadUrl ->
-            {
-                if (downloadUrl != null)
-                {
+            uploadFloatPlanPdf(pdfFile, downloadUrl -> {
+                if (downloadUrl != null) {
                     floatPlan.setPdfUrl(downloadUrl);
-                    saveFloatPlanMetadata(floatPlan, floatPlanId ->
-                    {
-                        if (floatPlanId != null)
-                        {
+                    saveFloatPlanMetadata(floatPlan, floatPlanId -> {
+                        if (floatPlanId != null) {
                             shareFloatPlan(floatPlanId);
-                        }
-                        else
-                        {
+                        } else {
                             Toast.makeText(requireContext(), "Failed to save metadata", Toast.LENGTH_SHORT).show();
                         }
                     });
-                }
-                else
-                {
+                } else {
                     Toast.makeText(requireContext(), "Failed to upload PDF", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -154,22 +161,16 @@ public class FloatPlanFragment extends Fragment
         return view;
     }
 
-    private int parseIntOrZero(String value)
-    {
-        try
-        {
+    private int parseIntOrZero(String value) {
+        try {
             return Integer.parseInt(value);
-        }
-        catch (NumberFormatException e)
-        {
+        } catch (NumberFormatException e) {
             return 0;
         }
     }
 
-    private void createFloatPlanPdf(FloatPlan floatPlan, String outputPath)
-    {
-        try
-        {
+    private void createFloatPlanPdf(FloatPlan floatPlan, String outputPath) {
+        try {
             File pdfFile = new File(outputPath);
             PdfWriter writer = new PdfWriter(pdfFile);
             PdfDocument pdf = new PdfDocument(writer);
@@ -187,7 +188,7 @@ public class FloatPlanFragment extends Fragment
             document.add(new Paragraph("Length: " + floatPlan.getKayakLength() + ", Color: " + floatPlan.getKayakColor()));
             document.add(new Paragraph("Safety Equipment Notes: " + floatPlan.getSafetyEquipmentNotes()));
             document.add(new Paragraph("Vehicle Information"));
-            document.add(new Paragraph("Make: " + floatPlan.getVehicleMake() + ", Model: " + floatPlan.getVehicleModel()));
+            document.add(new Paragraph("Make: " + floatPlan.getVehicleMake() + ", Color: " + floatPlan.getVehicleColor()));
             document.add(new Paragraph("Trip Details"));
             document.add(new Paragraph("Departure: " + floatPlan.getDepartureDate() + " " + floatPlan.getDepartureTime()));
             document.add(new Paragraph("Put-In: " + floatPlan.getPutInLocation()));
@@ -195,23 +196,18 @@ public class FloatPlanFragment extends Fragment
             document.add(new Paragraph("Return: " + floatPlan.getReturnTime()));
             document.add(new Paragraph("Notes: " + floatPlan.getTripNotes()));
             document.close();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             Toast.makeText(requireContext(), "Error creating PDF: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
-    private interface UploadCallback
-    {
+    private interface UploadCallback {
         void onComplete(String downloadUrl);
     }
 
-    private void uploadFloatPlanPdf(FloatPlan floatPlan, File pdfFile, UploadCallback callback)
-    {
+    private void uploadFloatPlanPdf(File pdfFile, UploadCallback callback) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
-        if (auth.getCurrentUser() == null)
-        {
+        if (auth.getCurrentUser() == null) {
             callback.onComplete(null);
             return;
         }
@@ -219,43 +215,36 @@ public class FloatPlanFragment extends Fragment
         StorageReference storageRef = FirebaseStorage.getInstance().getReference();
         StorageReference pdfRef = storageRef.child("float_plans/" + auth.getCurrentUser().getUid() + "/" + pdfFile.getName());
         pdfRef.putFile(android.net.Uri.fromFile(pdfFile))
-                .addOnProgressListener(taskSnapshot ->
-                {
+                .addOnProgressListener(taskSnapshot -> {
                     double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
                     Toast.makeText(requireContext(), "Uploading: " + (int) progress + "%", Toast.LENGTH_SHORT).show();
                 })
                 .addOnSuccessListener(taskSnapshot -> pdfRef.getDownloadUrl().addOnSuccessListener(uri -> callback.onComplete(uri.toString())))
-                .addOnFailureListener(e ->
-                {
+                .addOnFailureListener(e -> {
                     Toast.makeText(requireContext(), "Upload failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     callback.onComplete(null);
                 });
     }
 
-    private interface MetadataCallback
-    {
+    private interface MetadataCallback {
         void onComplete(String floatPlanId);
     }
 
-    private void saveFloatPlanMetadata(FloatPlan floatPlan, MetadataCallback callback)
-    {
+    private void saveFloatPlanMetadata(FloatPlan floatPlan, MetadataCallback callback) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("float_plans")
                 .add(floatPlan.toMap())
                 .addOnSuccessListener(documentReference -> callback.onComplete(documentReference.getId()))
-                .addOnFailureListener(e ->
-                {
+                .addOnFailureListener(e -> {
                     Toast.makeText(requireContext(), "Failed to save metadata: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     callback.onComplete(null);
                 });
     }
 
-    private void shareFloatPlan(String floatPlanId)
-    {
+    private void shareFloatPlan(String floatPlanId) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("float_plans").document(floatPlanId).get()
-                .addOnSuccessListener(documentSnapshot ->
-                {
+                .addOnSuccessListener(documentSnapshot -> {
                     String pdfUrl = documentSnapshot.getString("pdfUrl");
 
                     if (pdfUrl != null)

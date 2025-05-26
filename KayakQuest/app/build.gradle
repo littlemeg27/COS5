@@ -48,17 +48,19 @@ dependencies {
     implementation libs.fragment
     implementation platform(libs.firebase.bom)
     implementation libs.firebase.auth
+    implementation libs.firebase.firestore
+    implementation libs.firebase.storage
     implementation libs.play.services.auth
     implementation libs.play.services.maps
     implementation libs.retrofit
     implementation libs.retrofit.converter.gson
     implementation libs.lifecycle.viewmodel
     implementation libs.lifecycle.livedata
+    implementation libs.navigation.fragment
+    implementation libs.navigation.ui
+    implementation libs.recyclerview
+    implementation libs.itext
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
-    implementation libs.firebase.firestore
-    implementation libs.firebase.storage
-    implementation 'com.itextpdf:itext7-core:7.2.5'
-    implementation libs.recyclerview
 }

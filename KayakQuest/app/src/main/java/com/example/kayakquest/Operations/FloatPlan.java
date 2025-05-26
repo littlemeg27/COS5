@@ -3,8 +3,7 @@ package com.example.kayakquest.Operations;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FloatPlan
-{
+public class FloatPlan {
     private String kayakerName;
     private String gender;
     private String phoneNumber;
@@ -20,7 +19,7 @@ public class FloatPlan
     private String kayakColor;
     private String safetyEquipmentNotes;
     private String vehicleMake;
-    private String vehicleModel;
+    private String vehicleColor;
     private String departureDate;
     private String departureTime;
     private String putInLocation;
@@ -30,8 +29,7 @@ public class FloatPlan
     private String userId;
     private String pdfUrl;
 
-    public FloatPlan()
-    {
+    public FloatPlan() {
         this.kayakerName = "";
         this.gender = "";
         this.phoneNumber = "";
@@ -47,7 +45,7 @@ public class FloatPlan
         this.kayakColor = "";
         this.safetyEquipmentNotes = "";
         this.vehicleMake = "";
-        this.vehicleModel = "";
+        this.vehicleColor = "";
         this.departureDate = "";
         this.departureTime = "";
         this.putInLocation = "";
@@ -59,13 +57,12 @@ public class FloatPlan
     }
 
     public FloatPlan(String kayakerName, String gender, String phoneNumber, int age, String address,
-                          String city, String state, String emergencyContact, String emergencyPhone,
-                          String kayakMake, String kayakModel, String kayakLength, String kayakColor,
-                          String safetyEquipmentNotes, String vehicleMake, String vehicleModel,
-                          String departureDate, String departureTime, String putInLocation,
-                          String takeOutLocation, String returnTime, String tripNotes, String userId,
-                          String pdfUrl)
-    {
+                     String city, String state, String emergencyContact, String emergencyPhone,
+                     String kayakMake, String kayakModel, String kayakLength, String kayakColor,
+                     String safetyEquipmentNotes, String vehicleMake, String vehicleColor,
+                     String departureDate, String departureTime, String putInLocation,
+                     String takeOutLocation, String returnTime, String tripNotes, String userId,
+                     String pdfUrl) {
         this.kayakerName = kayakerName;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
@@ -81,7 +78,7 @@ public class FloatPlan
         this.kayakColor = kayakColor;
         this.safetyEquipmentNotes = safetyEquipmentNotes;
         this.vehicleMake = vehicleMake;
-        this.vehicleModel = vehicleModel;
+        this.vehicleColor = vehicleColor;
         this.departureDate = departureDate;
         this.departureTime = departureTime;
         this.putInLocation = putInLocation;
@@ -92,6 +89,7 @@ public class FloatPlan
         this.pdfUrl = pdfUrl;
     }
 
+    // Getters and setters
     public String getKayakerName() { return kayakerName; }
     public void setKayakerName(String kayakerName) { this.kayakerName = kayakerName; }
     public String getGender() { return gender; }
@@ -122,8 +120,8 @@ public class FloatPlan
     public void setSafetyEquipmentNotes(String safetyEquipmentNotes) { this.safetyEquipmentNotes = safetyEquipmentNotes; }
     public String getVehicleMake() { return vehicleMake; }
     public void setVehicleMake(String vehicleMake) { this.vehicleMake = vehicleMake; }
-    public String getVehicleModel() { return vehicleModel; }
-    public void setVehicleModel(String vehicleModel) { this.vehicleModel = vehicleModel; }
+    public String getVehicleColor() { return vehicleColor; }
+    public void setVehicleColor(String vehicleColor) { this.vehicleColor = vehicleColor; }
     public String getDepartureDate() { return departureDate; }
     public void setDepartureDate(String departureDate) { this.departureDate = departureDate; }
     public String getDepartureTime() { return departureTime; }
@@ -141,8 +139,7 @@ public class FloatPlan
     public String getPdfUrl() { return pdfUrl; }
     public void setPdfUrl(String pdfUrl) { this.pdfUrl = pdfUrl; }
 
-    public Map<String, Object> toMap()
-    {
+    public Map<String, Object> toMap() {
         Map<String, Object> map = new HashMap<>();
         map.put("kayakerName", kayakerName);
         map.put("gender", gender);
@@ -159,7 +156,7 @@ public class FloatPlan
         map.put("kayakColor", kayakColor);
         map.put("safetyEquipmentNotes", safetyEquipmentNotes);
         map.put("vehicleMake", vehicleMake);
-        map.put("vehicleModel", vehicleModel);
+        map.put("vehicleColor", vehicleColor);
         map.put("departureDate", departureDate);
         map.put("departureTime", departureTime);
         map.put("putInLocation", putInLocation);

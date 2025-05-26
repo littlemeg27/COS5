@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/floatPlanFragment">
+
+    <fragment
+        android:id="@+id/floatPlanFragment"
+        android:name="com.example.kayakquest.Fragments.FloatPlanFragment">
+        <action
+            android:id="@+id/action_floatPlanFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.kayakquest.Fragments.SignInFragment" />
+</navigation>

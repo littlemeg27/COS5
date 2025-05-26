@@ -28,7 +28,7 @@
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/name"
+                android:id="@+id/paddler_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
@@ -51,7 +51,7 @@
             android:layout_marginTop="16dp" />
 
         <Spinner
-            android:id="@+id/gender_dropdown"
+            android:id="@+id/gender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
@@ -68,7 +68,7 @@
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/phone_number_input"
+                android:id="@+id/phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
