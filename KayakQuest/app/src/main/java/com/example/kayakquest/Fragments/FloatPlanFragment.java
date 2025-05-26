@@ -71,7 +71,6 @@ public class FloatPlanFragment extends Fragment
         textArea = view.findViewById(R.id.text_area);
         btnSubmit = view.findViewById(R.id.btn_submit);
 
-        // Setup spinners
         ArrayAdapter<CharSequence> genderAdapter = ArrayAdapter.createFromResource(
                 requireContext(), R.array.dropdown_gender, android.R.layout.simple_spinner_dropdown_item);
         genderDropdown.setAdapter(genderAdapter);
@@ -92,27 +91,27 @@ public class FloatPlanFragment extends Fragment
                 requireContext(), R.array.dropdown_car_color, android.R.layout.simple_spinner_dropdown_item);
         carColorDropdown.setAdapter(vehicleColorAdapter);
 
-        btnSubmit.setOnClickListener(v -> {
-            if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+        btnSubmit.setOnClickListener(v ->
+        {
+            if (FirebaseAuth.getInstance().getCurrentUser() == null)
+            {
                 Toast.makeText(requireContext(), "Please sign in first", Toast.LENGTH_SHORT).show();
                 NavController navController = Navigation.findNavController(v);
                 navController.navigate(R.id.action_floatPlanFragment_to_signInFragment);
                 return;
             }
 
-            // Input validation
-            if (name.getText() == null || name.getText().toString().trim().isEmpty()) {
+            if (name.getText() == null || name.getText().toString().trim().isEmpty())
+            {
                 Toast.makeText(requireContext(), "Name is required", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Format date
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
             Calendar calendar = Calendar.getInstance();
             calendar.set(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth());
             String departureDate = dateFormat.format(calendar.getTime());
 
-            // Create float plan with null checks
             FloatPlan floatPlan = new FloatPlan(
                     name.getText() != null ? name.getText().toString() : "",
                     genderDropdown.getSelectedItem() != null ? genderDropdown.getSelectedItem().toString() : "",
@@ -142,17 +141,25 @@ public class FloatPlanFragment extends Fragment
 
             File pdfFile = new File(requireContext().getFilesDir(), "float_plan_" + System.currentTimeMillis() + ".pdf");
             createFloatPlanPdf(floatPlan, pdfFile.getAbsolutePath());
-            uploadFloatPlanPdf(pdfFile, downloadUrl -> {
-                if (downloadUrl != null) {
+            uploadFloatPlanPdf(pdfFile, downloadUrl ->
+            {
+                if (downloadUrl != null)
+                {
                     floatPlan.setPdfUrl(downloadUrl);
-                    saveFloatPlanMetadata(floatPlan, floatPlanId -> {
-                        if (floatPlanId != null) {
+                    saveFloatPlanMetadata(floatPlan, floatPlanId ->
+                    {
+                        if (floatPlanId != null)
+                        {
                             shareFloatPlan(floatPlanId);
-                        } else {
+                        }
+                        else
+                        {
                             Toast.makeText(requireContext(), "Failed to save metadata", Toast.LENGTH_SHORT).show();
                         }
                     });
-                } else {
+                }
+                else
+                {
                     Toast.makeText(requireContext(), "Failed to upload PDF", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -161,16 +168,22 @@ public class FloatPlanFragment extends Fragment
         return view;
     }
 
-    private int parseIntOrZero(String value) {
-        try {
+    private int parseIntOrZero(String value)
+    {
+        try
+        {
             return Integer.parseInt(value);
-        } catch (NumberFormatException e) {
+        }
+        catch (NumberFormatException e)
+        {
             return 0;
         }
     }
 
-    private void createFloatPlanPdf(FloatPlan floatPlan, String outputPath) {
-        try {
+    private void createFloatPlanPdf(FloatPlan floatPlan, String outputPath)
+    {
+        try
+        {
             File pdfFile = new File(outputPath);
             PdfWriter writer = new PdfWriter(pdfFile);
             PdfDocument pdf = new PdfDocument(writer);
@@ -201,13 +214,17 @@ public class FloatPlanFragment extends Fragment
         }
     }
 
-    private interface UploadCallback {
+    private interface UploadCallback
+    {
         void onComplete(String downloadUrl);
     }
 
-    private void uploadFloatPlanPdf(File pdfFile, UploadCallback callback) {
+    private void uploadFloatPlanPdf(File pdfFile, UploadCallback callback)
+    {
         FirebaseAuth auth = FirebaseAuth.getInstance();
-        if (auth.getCurrentUser() == null) {
+
+        if (auth.getCurrentUser() == null)
+        {
             callback.onComplete(null);
             return;
         }
@@ -215,36 +232,44 @@ public class FloatPlanFragment extends Fragment
         StorageReference storageRef = FirebaseStorage.getInstance().getReference();
         StorageReference pdfRef = storageRef.child("float_plans/" + auth.getCurrentUser().getUid() + "/" + pdfFile.getName());
         pdfRef.putFile(android.net.Uri.fromFile(pdfFile))
-                .addOnProgressListener(taskSnapshot -> {
+
+                .addOnProgressListener(taskSnapshot ->
+                {
                     double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
                     Toast.makeText(requireContext(), "Uploading: " + (int) progress + "%", Toast.LENGTH_SHORT).show();
                 })
                 .addOnSuccessListener(taskSnapshot -> pdfRef.getDownloadUrl().addOnSuccessListener(uri -> callback.onComplete(uri.toString())))
-                .addOnFailureListener(e -> {
+                .addOnFailureListener(e ->
+                {
                     Toast.makeText(requireContext(), "Upload failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     callback.onComplete(null);
                 });
     }
 
-    private interface MetadataCallback {
+    private interface MetadataCallback
+    {
         void onComplete(String floatPlanId);
     }
 
-    private void saveFloatPlanMetadata(FloatPlan floatPlan, MetadataCallback callback) {
+    private void saveFloatPlanMetadata(FloatPlan floatPlan, MetadataCallback callback)
+    {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("float_plans")
                 .add(floatPlan.toMap())
                 .addOnSuccessListener(documentReference -> callback.onComplete(documentReference.getId()))
-                .addOnFailureListener(e -> {
+                .addOnFailureListener(e ->
+                {
                     Toast.makeText(requireContext(), "Failed to save metadata: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     callback.onComplete(null);
                 });
     }
 
-    private void shareFloatPlan(String floatPlanId) {
+    private void shareFloatPlan(String floatPlanId)
+    {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("float_plans").document(floatPlanId).get()
-                .addOnSuccessListener(documentSnapshot -> {
+                .addOnSuccessListener(documentSnapshot ->
+                {
                     String pdfUrl = documentSnapshot.getString("pdfUrl");
 
                     if (pdfUrl != null)
