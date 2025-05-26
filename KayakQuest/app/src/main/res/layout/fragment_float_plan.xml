@@ -51,7 +51,7 @@
             android:layout_marginTop="16dp" />
 
         <Spinner
-            android:id="@+id/gender"
+            android:id="@+id/gender_dropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
@@ -133,17 +133,6 @@
             app:hintTextColor="#FF666666"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/city"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:padding="12dp"
-                android:hint="@string/city"
-                android:inputType="textPostalAddress"
-                android:autofillHints="addressCity"
-                android:textColor="#FF000000"
-                android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -259,6 +248,18 @@
                 android:hint="@string/kayak_make"
                 android:inputType="text"
                 android:autofillHints="deviceModel"
+                android:textColor="#FF000000"
+                android:textColorHint="#FF666666" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="addressCity"
+                android:hint="@string/city"
+                android:inputType="textPostalAddress"
+                android:minHeight="48dp"
+                android:padding="12dp"
                 android:textColor="#FF000000"
                 android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -402,6 +403,35 @@
             android:textSize="16sp"
             android:paddingHorizontal="8dp" />
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            app:hintTextColor="#FF666666"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/vehicle_model"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:hint="@string/vehicle_model"
+                android:inputType="textPersonName"
+                android:autofillHints="Model"
+                android:textColor="#FF000000"
+                android:textColorHint="#FF666666" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/vehicle_color"
+        android:textColor="#FF333333"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:paddingHorizontal="8dp" />
+
         <Spinner
             android:id="@+id/car_color_dropdown"
             android:layout_width="match_parent"
@@ -411,6 +441,35 @@
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown"
             android:prompt="@string/car_color_dropdown" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plate_number"
+            android:textColor="#FF333333"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingHorizontal="8dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            app:hintTextColor="#FF666666"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/plate_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:hint="@string/plate_number"
+                android:inputType="textPersonName"
+                android:autofillHints="Model"
+                android:textColor="#FF000000"
+                android:textColorHint="#FF666666" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Separator -->
         <View
@@ -445,6 +504,15 @@
             android:layout_marginHorizontal="8dp"
             android:datePickerMode="spinner"
             android:calendarViewShown="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/put_in_location"
+            android:textColor="#FF333333"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingHorizontal="8dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"

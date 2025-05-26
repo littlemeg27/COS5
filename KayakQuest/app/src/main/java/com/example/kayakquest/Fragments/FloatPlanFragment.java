@@ -33,10 +33,27 @@ import java.util.Locale;
 
 public class FloatPlanFragment extends Fragment
 {
-    private TextInputEditText name, phoneNumberInput, ageInput, address, city, emergencyName,
-            emergencyPhoneNumberInput, kayakMake, kayakModel, kayakLength, safetyTextArea,
-            departure, arrival, textArea;
-    private android.widget.Spinner genderDropdown, stateDropdown, kayakColorDropdown, carMakeDropdown, carColorDropdown;
+    private TextInputEditText
+            name,
+            phoneNumberInput,
+            ageInput,
+            address,
+            city,
+            emergencyName,
+            emergencyPhoneNumberInput,
+            kayakMake,
+            kayakModel,
+            kayakLength,
+            safetyTextArea,
+            departure,
+            arrival,
+            textArea;
+    private android.widget.Spinner
+            genderDropdown,
+            stateDropdown,
+            kayakColorDropdown,
+            carMakeDropdown,
+            carColorDropdown;
     private DatePicker datePicker;
     private TimePicker startTimePicker, endTimePicker;
     private MaterialButton btnSubmit;
@@ -47,9 +64,9 @@ public class FloatPlanFragment extends Fragment
     {
         View view = inflater.inflate(R.layout.fragment_float_plan, container, false);
 
-        name = view.findViewById(R.id.name);
+        name = view.findViewById(R.id.paddler_name);
         genderDropdown = view.findViewById(R.id.gender_dropdown);
-        phoneNumberInput = view.findViewById(R.id.phone_number_input);
+        phoneNumberInput = view.findViewById(R.id.phone_number);
         ageInput = view.findViewById(R.id.age_input);
         address = view.findViewById(R.id.address);
         city = view.findViewById(R.id.city);
@@ -61,7 +78,7 @@ public class FloatPlanFragment extends Fragment
         kayakLength = view.findViewById(R.id.kayak_length);
         kayakColorDropdown = view.findViewById(R.id.kayak_dropdown);
         safetyTextArea = view.findViewById(R.id.safety_text_area);
-        carMakeDropdown = view.findById(R.id.car_make_dropdown);
+        carMakeDropdown = view.findViewById(R.id.car_make_dropdown);
         carColorDropdown = view.findViewById(R.id.car_color_dropdown);
         datePicker = view.findViewById(R.id.date_picker);
         departure = view.findViewById(R.id.departure);
@@ -209,7 +226,9 @@ public class FloatPlanFragment extends Fragment
             document.add(new Paragraph("Return: " + floatPlan.getReturnTime()));
             document.add(new Paragraph("Notes: " + floatPlan.getTripNotes()));
             document.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             Toast.makeText(requireContext(), "Error creating PDF: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }

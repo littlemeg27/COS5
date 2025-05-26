@@ -9,8 +9,8 @@
     <string name="put_in_location">Put-In Location</string>
     <string name="select_date">Select Date</string>
     <string name="trip_notes">Trip Details:</string>
-    <string name="vehicle_model">Vehicle Model:</string>
-    <string name="vehicle_make">Vehicle Make:</string>
+    <string name="vehicle_model">Model:</string>
+    <string name="vehicle_make">Make:</string>
     <string name="vehicle_information">Vehicle Information:</string>
     <string name="safety_equipment_notes">Safety Equipment on Board:</string>
     <string name="length">Length (ft)</string>
@@ -30,4 +30,6 @@
     <string name="gender">Gender</string>
     <string name="kayak_color">Kayak Color</string>
     <string name="app_name">Kayak Quest</string>
+    <string name="plate_number">Plate Number</string>
+    <string name="vehicle_color">Color</string>
 </resources>
