@@ -34,17 +34,19 @@ import java.util.Locale;
 public class FloatPlanFragment extends Fragment
 {
     private TextInputEditText
-            name,
-            phoneNumberInput,
+            paddlerName,
+            phoneNumber,
             ageInput,
             address,
             city,
             emergencyName,
-            emergencyPhoneNumberInput,
+            emergencyPhoneNumber,
             kayakMake,
             kayakModel,
             kayakLength,
             safetyTextArea,
+            carModel,
+            carPlateNumber,
             departure,
             arrival,
             textArea;
@@ -64,20 +66,22 @@ public class FloatPlanFragment extends Fragment
     {
         View view = inflater.inflate(R.layout.fragment_float_plan, container, false);
 
-        name = view.findViewById(R.id.paddler_name);
+        paddlerName = view.findViewById(R.id.paddler_name);
         genderDropdown = view.findViewById(R.id.gender_dropdown);
-        phoneNumberInput = view.findViewById(R.id.phone_number);
+        phoneNumber = view.findViewById(R.id.phone_number);
         ageInput = view.findViewById(R.id.age_input);
         address = view.findViewById(R.id.address);
         city = view.findViewById(R.id.city);
         stateDropdown = view.findViewById(R.id.state_dropdown);
         emergencyName = view.findViewById(R.id.emergency_name);
-        emergencyPhoneNumberInput = view.findViewById(R.id.emergency_phone_number_input);
+        emergencyPhoneNumber = view.findViewById(R.id.emergency_phone_number_input);
         kayakMake = view.findViewById(R.id.kayak_make);
         kayakModel = view.findViewById(R.id.kayak_model);
         kayakLength = view.findViewById(R.id.kayak_length);
         kayakColorDropdown = view.findViewById(R.id.kayak_dropdown);
         safetyTextArea = view.findViewById(R.id.safety_text_area);
+        carModel = view.findViewById(R.id.vehicle_model);
+        carPlateNumber = view.findViewById(R.id.plate_number);
         carMakeDropdown = view.findViewById(R.id.car_make_dropdown);
         carColorDropdown = view.findViewById(R.id.car_color_dropdown);
         datePicker = view.findViewById(R.id.date_picker);
@@ -118,7 +122,7 @@ public class FloatPlanFragment extends Fragment
                 return;
             }
 
-            if (name.getText() == null || name.getText().toString().trim().isEmpty())
+            if (paddlerName.getText() == null || paddlerName.getText().toString().trim().isEmpty())
             {
                 Toast.makeText(requireContext(), "Name is required", Toast.LENGTH_SHORT).show();
                 return;
@@ -130,20 +134,22 @@ public class FloatPlanFragment extends Fragment
             String departureDate = dateFormat.format(calendar.getTime());
 
             FloatPlan floatPlan = new FloatPlan(
-                    name.getText() != null ? name.getText().toString() : "",
+                    paddlerName.getText() != null ? paddlerName.getText().toString() : "",
                     genderDropdown.getSelectedItem() != null ? genderDropdown.getSelectedItem().toString() : "",
-                    phoneNumberInput.getText() != null ? phoneNumberInput.getText().toString() : "",
+                    phoneNumber.getText() != null ? phoneNumber.getText().toString() : "",
                     parseIntOrZero(ageInput.getText() != null ? ageInput.getText().toString() : ""),
                     address.getText() != null ? address.getText().toString() : "",
                     city.getText() != null ? city.getText().toString() : "",
                     stateDropdown.getSelectedItem() != null ? stateDropdown.getSelectedItem().toString() : "",
                     emergencyName.getText() != null ? emergencyName.getText().toString() : "",
-                    emergencyPhoneNumberInput.getText() != null ? emergencyPhoneNumberInput.getText().toString() : "",
+                    emergencyPhoneNumber.getText() != null ? emergencyPhoneNumber.getText().toString() : "",
                     kayakMake.getText() != null ? kayakMake.getText().toString() : "",
                     kayakModel.getText() != null ? kayakModel.getText().toString() : "",
                     kayakLength.getText() != null ? kayakLength.getText().toString() : "",
                     kayakColorDropdown.getSelectedItem() != null ? kayakColorDropdown.getSelectedItem().toString() : "",
                     safetyTextArea.getText() != null ? safetyTextArea.getText().toString() : "",
+                    carModel.getText() != null ? carModel.getText().toString() : "",
+                    carPlateNumber.getText() != null ? carPlateNumber.getText().toString() : "",
                     carMakeDropdown.getSelectedItem() != null ? carMakeDropdown.getSelectedItem().toString() : "",
                     carColorDropdown.getSelectedItem() != null ? carColorDropdown.getSelectedItem().toString() : "",
                     departureDate,
@@ -219,6 +225,7 @@ public class FloatPlanFragment extends Fragment
             document.add(new Paragraph("Safety Equipment Notes: " + floatPlan.getSafetyEquipmentNotes()));
             document.add(new Paragraph("Vehicle Information"));
             document.add(new Paragraph("Make: " + floatPlan.getVehicleMake() + ", Color: " + floatPlan.getVehicleColor()));
+            document.add(new Paragraph("Model: " + floatPlan.getVehicleMake() + ", Plate Number: " + floatPlan.getVehicleColor()));
             document.add(new Paragraph("Trip Details"));
             document.add(new Paragraph("Departure: " + floatPlan.getDepartureDate() + " " + floatPlan.getDepartureTime()));
             document.add(new Paragraph("Put-In: " + floatPlan.getPutInLocation()));

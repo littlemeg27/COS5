@@ -3,7 +3,8 @@ package com.example.kayakquest.Operations;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FloatPlan {
+public class FloatPlan
+{
     private String kayakerName;
     private String gender;
     private String phoneNumber;
@@ -20,6 +21,8 @@ public class FloatPlan {
     private String safetyEquipmentNotes;
     private String vehicleMake;
     private String vehicleColor;
+    private String vehicleModel;
+    private String plateNumber;
     private String departureDate;
     private String departureTime;
     private String putInLocation;
@@ -29,7 +32,8 @@ public class FloatPlan {
     private String userId;
     private String pdfUrl;
 
-    public FloatPlan() {
+    public FloatPlan()
+    {
         this.kayakerName = "";
         this.gender = "";
         this.phoneNumber = "";
@@ -46,6 +50,8 @@ public class FloatPlan {
         this.safetyEquipmentNotes = "";
         this.vehicleMake = "";
         this.vehicleColor = "";
+        this.vehicleModel = "";
+        this.plateNumber = "";
         this.departureDate = "";
         this.departureTime = "";
         this.putInLocation = "";
@@ -59,10 +65,11 @@ public class FloatPlan {
     public FloatPlan(String kayakerName, String gender, String phoneNumber, int age, String address,
                      String city, String state, String emergencyContact, String emergencyPhone,
                      String kayakMake, String kayakModel, String kayakLength, String kayakColor,
-                     String safetyEquipmentNotes, String vehicleMake, String vehicleColor,
-                     String departureDate, String departureTime, String putInLocation,
+                     String safetyEquipmentNotes, String vehicleMake, String vehicleColor, String vehicleModel,
+                     String plateNumber, String departureDate, String departureTime, String putInLocation,
                      String takeOutLocation, String returnTime, String tripNotes, String userId,
-                     String pdfUrl) {
+                     String pdfUrl)
+    {
         this.kayakerName = kayakerName;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
@@ -79,6 +86,8 @@ public class FloatPlan {
         this.safetyEquipmentNotes = safetyEquipmentNotes;
         this.vehicleMake = vehicleMake;
         this.vehicleColor = vehicleColor;
+        this.vehicleModel = vehicleModel;
+        this.plateNumber = plateNumber;
         this.departureDate = departureDate;
         this.departureTime = departureTime;
         this.putInLocation = putInLocation;
@@ -122,6 +131,10 @@ public class FloatPlan {
     public void setVehicleMake(String vehicleMake) { this.vehicleMake = vehicleMake; }
     public String getVehicleColor() { return vehicleColor; }
     public void setVehicleColor(String vehicleColor) { this.vehicleColor = vehicleColor; }
+    public String getVehicleModel() { return vehicleModel; }
+    public void setVehicleModel(String vehicleModel) { this.vehicleModel = vehicleModel; }
+    public String getPlateNumber() { return plateNumber; }
+    public void setPlateNumber(String plateNumber) { this.plateNumber = plateNumber; }
     public String getDepartureDate() { return departureDate; }
     public void setDepartureDate(String departureDate) { this.departureDate = departureDate; }
     public String getDepartureTime() { return departureTime; }
@@ -154,6 +167,8 @@ public class FloatPlan {
         map.put("kayakModel", kayakModel);
         map.put("kayakLength", kayakLength);
         map.put("kayakColor", kayakColor);
+        map.put("vehicleModel", vehicleModel);
+        map.put("plateNumber", plateNumber);
         map.put("safetyEquipmentNotes", safetyEquipmentNotes);
         map.put("vehicleMake", vehicleMake);
         map.put("vehicleColor", vehicleColor);

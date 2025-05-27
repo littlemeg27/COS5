@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
                 android:padding="12dp"
-                android:hint="@string/paddler_name"
+                android:hint="@string/paddler_name_hint"
                 android:inputType="textPersonName"
                 android:autofillHints="name"
                 android:textColor="#FF000000"
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
                 android:padding="12dp"
-                android:hint="@string/phone_number"
+                android:hint="@string/phone_number_hint"
                 android:inputType="phone"
                 android:digits="0123456789"
                 android:maxLength="15"
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
                 android:padding="12dp"
-                android:hint="@string/age"
+                android:hint="@string/age_hint"
                 android:inputType="number"
                 android:digits="0123456789"
                 android:maxLength="3"
@@ -119,7 +119,7 @@
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
                 android:padding="12dp"
-                android:hint="@string/address"
+                android:hint="@string/address_hint"
                 android:inputType="textPostalAddress"
                 android:autofillHints="postalAddress"
                 android:textColor="#FF000000"
@@ -133,6 +133,17 @@
             app:hintTextColor="#FF666666"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:hint="@string/city_hint"
+                android:inputType="textPostalAddress"
+                android:autofillHints="addressCity"
+                android:textColor="#FF000000"
+                android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -185,7 +196,7 @@
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
                 android:padding="12dp"
-                android:hint="@string/emergency_contact"
+                android:hint="@string/emergency_contact_hint"
                 android:inputType="textPersonName"
                 android:autofillHints="name"
                 android:textColor="#FF000000"
@@ -205,7 +216,7 @@
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
                 android:padding="12dp"
-                android:hint="@string/emergency_phone_number"
+                android:hint="@string/emergency_phone_number_hint"
                 android:inputType="phone"
                 android:digits="0123456789"
                 android:maxLength="15"
@@ -245,21 +256,9 @@
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
                 android:padding="12dp"
-                android:hint="@string/kayak_make"
+                android:hint="@string/kayak_make_hint"
                 android:inputType="text"
                 android:autofillHints="deviceModel"
-                android:textColor="#FF000000"
-                android:textColorHint="#FF666666" />
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/city"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints="addressCity"
-                android:hint="@string/city"
-                android:inputType="textPostalAddress"
-                android:minHeight="48dp"
-                android:padding="12dp"
                 android:textColor="#FF000000"
                 android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -277,7 +276,7 @@
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
                 android:padding="12dp"
-                android:hint="@string/kayak_model"
+                android:hint="@string/kayak_model_hint"
                 android:inputType="text"
                 android:autofillHints="deviceModel"
                 android:textColor="#FF000000"
@@ -297,7 +296,7 @@
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
                 android:padding="12dp"
-                android:hint="@string/length"
+                android:hint="@string/kayak_length_hint"
                 android:inputType="number"
                 android:digits="0123456789"
                 android:maxLength="3"
@@ -346,7 +345,7 @@
                 android:id="@+id/safety_text_area"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:hint="@string/safety_equipment_notes"
+                android:hint="@string/safety_equipment_notes_hint"
                 android:inputType="textMultiLine"
                 android:gravity="top|start"
                 android:minLines="5"
@@ -417,20 +416,20 @@
                 android:minHeight="48dp"
                 android:padding="12dp"
                 android:hint="@string/vehicle_model"
-                android:inputType="textPersonName"
-                android:autofillHints="Model"
+                android:inputType="text"
+                android:autofillHints="licensePlate"
                 android:textColor="#FF000000"
                 android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/vehicle_color"
-        android:textColor="#FF333333"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:paddingHorizontal="8dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vehicle_color"
+            android:textColor="#FF333333"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingHorizontal="8dp" />
 
         <Spinner
             android:id="@+id/car_color_dropdown"
@@ -464,9 +463,9 @@
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
                 android:padding="12dp"
-                android:hint="@string/plate_number"
-                android:inputType="textPersonName"
-                android:autofillHints="Model"
+                android:hint="@string/plate_number_hint"
+                android:inputType="text"
+                android:autofillHints="licensePlate"
                 android:textColor="#FF000000"
                 android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -527,7 +526,7 @@
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
                 android:padding="12dp"
-                android:hint="@string/put_in_location"
+                android:hint="@string/put_in_location_hint"
                 android:inputType="textPostalAddress"
                 android:autofillHints="addressLocality"
                 android:textColor="#FF000000"
@@ -550,6 +549,15 @@
             android:layout_marginHorizontal="8dp"
             android:timePickerMode="spinner" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/take_out_location"
+            android:textColor="#FF333333"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingHorizontal="8dp" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -563,7 +571,7 @@
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
                 android:padding="12dp"
-                android:hint="@string/take_out_location"
+                android:hint="@string/take_out_location_hint"
                 android:inputType="textPostalAddress"
                 android:autofillHints="addressLocality"
                 android:textColor="#FF000000"
@@ -606,7 +614,7 @@
                 android:id="@+id/text_area"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:hint="@string/trip_notes"
+                android:hint="@string/trip_notes_hint"
                 android:inputType="textMultiLine"
                 android:gravity="top|start"
                 android:minLines="5"
@@ -633,8 +641,6 @@
             android:padding="12dp"
             android:text="@string/submit"
             style="@style/Widget.Material3.Button"
-            app:backgroundTint="#FF6200EE"
-            android:textColor="#FFFFFFFF" />
-
+            app:backgroundTint="#FF6200EE" />
     </LinearLayout>
 </ScrollView>
