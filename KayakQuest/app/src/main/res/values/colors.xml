@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="Lavendar_Blush">#F3E8EE</color>
+    <color name="Ash_Grey">#BACDB0</color>
+    <color name="Cambrige_Blue">#729B79</color>
+    <color name="Paynes_Gray">#475B63</color>
+    <color name="Raisin_Black">#2E2C2F</color>
 </resources>

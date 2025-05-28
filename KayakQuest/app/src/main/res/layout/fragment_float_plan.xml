@@ -14,28 +14,29 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
             android:text="@string/kayaker_information"
             android:textColor="#FF333333"
-            android:textStyle="bold"
             android:textSize="25sp"
-            android:paddingHorizontal="8dp" />
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:hintTextColor="#FF666666"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/paddler_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:padding="12dp"
+                android:autofillHints="name"
                 android:hint="@string/paddler_name_hint"
                 android:inputType="textPersonName"
-                android:autofillHints="name"
+                android:minHeight="48dp"
+                android:padding="12dp"
                 android:textColor="#FF000000"
                 android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -43,42 +44,43 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:paddingHorizontal="8dp"
             android:text="@string/gender"
-            android:textStyle="bold"
             android:textColor="#FF333333"
             android:textSize="16sp"
-            android:paddingHorizontal="8dp"
-            android:layout_marginTop="16dp" />
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/gender_dropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="48dp"
             android:layout_marginHorizontal="8dp"
             android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown"
-            android:prompt="@string/gender_dropdown" />
+            android:minHeight="48dp"
+            android:prompt="@string/gender_dropdown"
+            android:spinnerMode="dropdown" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:hintTextColor="#FF666666"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints="phone"
+                android:digits="0123456789"
+                android:hint="@string/phone_number_hint"
+                android:imeOptions="actionDone"
+                android:inputType="phone"
+                android:maxLength="15"
                 android:minHeight="48dp"
                 android:padding="12dp"
-                android:hint="@string/phone_number_hint"
-                android:inputType="phone"
-                android:digits="0123456789"
-                android:maxLength="15"
-                android:autofillHints="phone"
-                android:imeOptions="actionDone"
                 android:textColor="#FF000000"
                 android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -87,21 +89,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:hintTextColor="#FF666666"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/age_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints="birthDateYear"
+                android:digits="0123456789"
+                android:hint="@string/age_hint"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:maxLength="3"
                 android:minHeight="48dp"
                 android:padding="12dp"
-                android:hint="@string/age_hint"
-                android:inputType="number"
-                android:digits="0123456789"
-                android:maxLength="3"
-                android:autofillHints="birthDateYear"
-                android:imeOptions="actionDone"
                 android:textColor="#FF000000"
                 android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -110,18 +113,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:hintTextColor="#FF666666"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:padding="12dp"
+                android:autofillHints="postalAddress"
                 android:hint="@string/address_hint"
                 android:inputType="textPostalAddress"
-                android:autofillHints="postalAddress"
+                android:minHeight="48dp"
+                android:padding="12dp"
                 android:textColor="#FF000000"
                 android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -130,18 +134,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:hintTextColor="#FF666666"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:padding="12dp"
+                android:autofillHints="addressCity"
                 android:hint="@string/city_hint"
                 android:inputType="textPostalAddress"
-                android:autofillHints="addressCity"
+                android:minHeight="48dp"
+                android:padding="12dp"
                 android:textColor="#FF000000"
                 android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -149,56 +154,57 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:paddingHorizontal="8dp"
             android:text="@string/state"
-            android:textStyle="bold"
             android:textColor="#FF333333"
             android:textSize="16sp"
-            android:paddingHorizontal="8dp"
-            android:layout_marginTop="16dp" />
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/state_dropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="48dp"
             android:layout_marginHorizontal="8dp"
             android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown"
-            android:prompt="@string/state_dropdown" />
+            android:minHeight="48dp"
+            android:prompt="@string/state_dropdown"
+            android:spinnerMode="dropdown" />
 
         <!-- Separator -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#FFCCCCCC"
-            android:layout_marginVertical="16dp" />
+            android:layout_marginVertical="16dp"
+            android:background="#FFCCCCCC" />
 
         <!-- Emergency Information -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
             android:text="@string/emergency_information"
-            android:textStyle="bold"
             android:textColor="#FF333333"
             android:textSize="25sp"
-            android:paddingHorizontal="8dp" />
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:hintTextColor="#FF666666"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emergency_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:padding="12dp"
+                android:autofillHints="name"
                 android:hint="@string/emergency_contact_hint"
                 android:inputType="textPersonName"
-                android:autofillHints="name"
+                android:minHeight="48dp"
+                android:padding="12dp"
                 android:textColor="#FF000000"
                 android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -207,21 +213,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:hintTextColor="#FF666666"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emergency_phone_number_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints="phone"
+                android:digits="0123456789"
+                android:hint="@string/emergency_phone_number_hint"
+                android:imeOptions="actionDone"
+                android:inputType="phone"
+                android:maxLength="15"
                 android:minHeight="48dp"
                 android:padding="12dp"
-                android:hint="@string/emergency_phone_number_hint"
-                android:inputType="phone"
-                android:digits="0123456789"
-                android:maxLength="15"
-                android:autofillHints="phone"
-                android:imeOptions="actionDone"
                 android:textColor="#FF000000"
                 android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -230,35 +237,36 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#FFCCCCCC"
-            android:layout_marginVertical="16dp" />
+            android:layout_marginVertical="16dp"
+            android:background="#FFCCCCCC" />
 
         <!-- Kayak Description -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
             android:text="@string/description_of_kayak"
-            android:textStyle="bold"
             android:textColor="#FF333333"
             android:textSize="25sp"
-            android:paddingHorizontal="8dp" />
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:hintTextColor="#FF666666"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/kayak_make"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:padding="12dp"
+                android:autofillHints="deviceModel"
                 android:hint="@string/kayak_make_hint"
                 android:inputType="text"
-                android:autofillHints="deviceModel"
+                android:minHeight="48dp"
+                android:padding="12dp"
                 android:textColor="#FF000000"
                 android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -267,18 +275,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:hintTextColor="#FF666666"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/kayak_model"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:padding="12dp"
+                android:autofillHints="deviceModel"
                 android:hint="@string/kayak_model_hint"
                 android:inputType="text"
-                android:autofillHints="deviceModel"
+                android:minHeight="48dp"
+                android:padding="12dp"
                 android:textColor="#FF000000"
                 android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -287,21 +296,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:hintTextColor="#FF666666"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/kayak_length"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints="quantity"
+                android:digits="0123456789"
+                android:hint="@string/kayak_length_hint"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:maxLength="3"
                 android:minHeight="48dp"
                 android:padding="12dp"
-                android:hint="@string/kayak_length_hint"
-                android:inputType="number"
-                android:digits="0123456789"
-                android:maxLength="3"
-                android:autofillHints="quantity"
-                android:imeOptions="actionDone"
                 android:textColor="#FF000000"
                 android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -309,50 +319,51 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:text="@string/kayak_color"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:textColor="#FF333333"
-            android:layout_marginBottom="8dp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/kayak_dropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="48dp"
             android:layout_marginHorizontal="8dp"
             android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown"
-            android:prompt="@string/kayak_dropdown" />
+            android:minHeight="48dp"
+            android:prompt="@string/kayak_dropdown"
+            android:spinnerMode="dropdown" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:text="@string/safety_equipment_notes"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:textColor="#FF333333"
-            android:layout_marginBottom="8dp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:hintTextColor="#FF666666"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/safety_text_area"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:autofillHints="notes"
+                android:gravity="top|start"
                 android:hint="@string/safety_equipment_notes_hint"
                 android:inputType="textMultiLine"
-                android:gravity="top|start"
-                android:minLines="5"
                 android:maxLines="10"
-                android:scrollbars="vertical"
+                android:minLines="5"
                 android:padding="10dp"
-                android:autofillHints="notes"
+                android:scrollbars="vertical"
                 android:textColor="#FF000000"
                 android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -361,63 +372,64 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#FFCCCCCC"
-            android:layout_marginVertical="16dp" />
+            android:layout_marginVertical="16dp"
+            android:background="#FFCCCCCC" />
 
         <!-- Vehicle Information -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
             android:text="@string/vehicle_information"
             android:textColor="#FF333333"
-            android:textStyle="bold"
             android:textSize="25sp"
-            android:paddingHorizontal="8dp" />
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
             android:text="@string/vehicle_make"
             android:textColor="#FF333333"
-            android:textStyle="bold"
             android:textSize="16sp"
-            android:paddingHorizontal="8dp" />
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/car_make_dropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="48dp"
             android:layout_marginHorizontal="8dp"
             android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown"
-            android:prompt="@string/car_make_dropdown" />
+            android:minHeight="48dp"
+            android:prompt="@string/car_make_dropdown"
+            android:spinnerMode="dropdown" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
             android:text="@string/vehicle_model"
             android:textColor="#FF333333"
-            android:textStyle="bold"
             android:textSize="16sp"
-            android:paddingHorizontal="8dp" />
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:hintTextColor="#FF666666"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/vehicle_model"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:padding="12dp"
+                android:autofillHints="licensePlate"
                 android:hint="@string/vehicle_model"
                 android:inputType="text"
-                android:autofillHints="licensePlate"
+                android:minHeight="48dp"
+                android:padding="12dp"
                 android:textColor="#FF000000"
                 android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -425,47 +437,48 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
             android:text="@string/vehicle_color"
             android:textColor="#FF333333"
-            android:textStyle="bold"
             android:textSize="16sp"
-            android:paddingHorizontal="8dp" />
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/car_color_dropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="48dp"
             android:layout_marginHorizontal="8dp"
             android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown"
-            android:prompt="@string/car_color_dropdown" />
+            android:minHeight="48dp"
+            android:prompt="@string/car_color_dropdown"
+            android:spinnerMode="dropdown" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
             android:text="@string/plate_number"
             android:textColor="#FF333333"
-            android:textStyle="bold"
             android:textSize="16sp"
-            android:paddingHorizontal="8dp" />
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:hintTextColor="#FF666666"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/plate_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:padding="12dp"
+                android:autofillHints="licensePlate"
                 android:hint="@string/plate_number_hint"
                 android:inputType="text"
-                android:autofillHints="licensePlate"
+                android:minHeight="48dp"
+                android:padding="12dp"
                 android:textColor="#FF000000"
                 android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -474,61 +487,62 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#FFCCCCCC"
-            android:layout_marginVertical="16dp" />
+            android:layout_marginVertical="16dp"
+            android:background="#FFCCCCCC" />
 
         <!-- Trip Details -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
             android:text="@string/trip_notes"
             android:textColor="#FF333333"
-            android:textStyle="bold"
             android:textSize="25sp"
-            android:paddingHorizontal="8dp" />
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:text="@string/select_date"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:textColor="#FF333333"
-            android:layout_marginBottom="8dp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <DatePicker
             android:id="@+id/date_picker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
-            android:datePickerMode="spinner"
-            android:calendarViewShown="false" />
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
             android:text="@string/put_in_location"
             android:textColor="#FF333333"
-            android:textStyle="bold"
             android:textSize="16sp"
-            android:paddingHorizontal="8dp" />
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:hintTextColor="#FF666666"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/departure"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:padding="12dp"
+                android:autofillHints="addressLocality"
                 android:hint="@string/put_in_location_hint"
                 android:inputType="textPostalAddress"
-                android:autofillHints="addressLocality"
+                android:minHeight="48dp"
+                android:padding="12dp"
                 android:textColor="#FF000000"
                 android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -536,11 +550,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:text="@string/estimated_leave_time"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:textColor="#FF333333"
-            android:layout_marginBottom="8dp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TimePicker
             android:id="@+id/start_time_picker"
@@ -552,28 +566,29 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
             android:text="@string/take_out_location"
             android:textColor="#FF333333"
-            android:textStyle="bold"
             android:textSize="16sp"
-            android:paddingHorizontal="8dp" />
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:hintTextColor="#FF666666"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/arrival"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:padding="12dp"
+                android:autofillHints="addressLocality"
                 android:hint="@string/take_out_location_hint"
                 android:inputType="textPostalAddress"
-                android:autofillHints="addressLocality"
+                android:minHeight="48dp"
+                android:padding="12dp"
                 android:textColor="#FF000000"
                 android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -581,11 +596,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:text="@string/estimated_time_of_return"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:textColor="#FF333333"
-            android:layout_marginBottom="8dp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TimePicker
             android:id="@+id/end_time_picker"
@@ -597,31 +612,32 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:text="@string/other_trip_details"
-            android:textSize="16sp"
-            android:textStyle="bold"
             android:textColor="#FF333333"
-            android:layout_marginBottom="8dp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
+            app:hintTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
             app:hintTextColor="#FF666666"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/text_area"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:autofillHints="notes"
+                android:gravity="top|start"
                 android:hint="@string/trip_notes_hint"
                 android:inputType="textMultiLine"
-                android:gravity="top|start"
-                android:minLines="5"
                 android:maxLines="10"
-                android:scrollbars="vertical"
+                android:minLines="5"
                 android:padding="10dp"
-                android:autofillHints="notes"
+                android:scrollbars="vertical"
                 android:textColor="#FF000000"
                 android:textColorHint="#FF666666" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -630,8 +646,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#FFCCCCCC"
-            android:layout_marginVertical="16dp" />
+            android:layout_marginVertical="16dp"
+            android:background="#FFCCCCCC" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_submit"
@@ -640,7 +656,7 @@
             android:minHeight="48dp"
             android:padding="12dp"
             android:text="@string/submit"
-            style="@style/Widget.Material3.Button"
-            app:backgroundTint="#FF6200EE" />
+            app:backgroundTint="#FF6200EE"
+            style="@style/Widget.MaterialComponents.Button" />
     </LinearLayout>
 </ScrollView>

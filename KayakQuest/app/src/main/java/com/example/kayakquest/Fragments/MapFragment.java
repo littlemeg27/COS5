@@ -50,7 +50,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback
     public void onMapReady(@NonNull GoogleMap googleMap)
     {
         this.googleMap = googleMap;
-        LatLng defaultLocation = new LatLng(37.7749, -122.4194); // San Francisco
+        LatLng defaultLocation = new LatLng(35.227085, -80.843124);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 10));
 
         googleMap.setOnMapLongClickListener(latLng ->

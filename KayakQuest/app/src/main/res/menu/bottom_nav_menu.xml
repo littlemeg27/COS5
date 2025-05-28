@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_signin"
+        android:id="@+id/signInFragment"
         android:icon="@drawable/ic_signin"
-        android:title="Sign In"/>
+        android:title="Sign In" />
     <item
-        android:id="@+id/nav_map"
+        android:id="@+id/mapFragment"
         android:icon="@drawable/ic_map"
-        android:title="Map"/>
+        android:title="Map" />
     <item
-        android:id="@+id/nav_float_plan"
+        android:id="@+id/floatPlanFragment"
         android:icon="@drawable/ic_float_plan"
-        android:title="Float Plan"/>
+        android:title="Float Plan" />
     <item
-        android:id="@+id/nav_weather"
+        android:id="@+id/weatherFragment"
         android:icon="@drawable/ic_weather"
-        android:title="Weather"/>
+        android:title="Home" />
     <item
-        android:id="@+id/nav_settings"
+        android:id="@+id/settingsFragment"
         android:icon="@drawable/ic_settings"
-        android:title="Settings"/>
+        android:title="Emergency" />
 </menu>
