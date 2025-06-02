@@ -3,6 +3,13 @@ plugins {
     alias(libs.plugins.google.services)
 }
 
+// Load local.properties
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localProperties.load(localPropertiesFile.newDataInputStream())
+}
+
 android {
     namespace 'com.example.kayakquest'
     compileSdk 35
@@ -15,8 +22,12 @@ android {
         versionName '1.0'
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-        // Reference MAPS_API_KEY from gradle.properties
-        manifestPlaceholders = [MAPS_API_KEY: project.property('MAPS_API_KEY') ?: ""]
+        manifestPlaceholders = [MAPS_API_KEY: localProperties.getProperty('maps.api.key', '')]
+        buildConfigField "String", "OPENWEATHER_API_KEY", "\"" + localProperties.getProperty('openweather.api.key', '') + "\""
+    }
+
+    buildFeatures {
+        buildConfig true // Enable BuildConfig generation
     }
 
     signingConfigs {
@@ -33,6 +44,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
+            buildConfigField "String", "OPENWEATHER_API_KEY", "\"" + localProperties.getProperty('openweather.api.key', '') + "\""
+        }
+        debug {
+            buildConfigField "String", "OPENWEATHER_API_KEY", "\"" + localProperties.getProperty('openweather.api.key', '') + "\""
         }
     }
 
@@ -63,8 +78,8 @@ dependencies {
     implementation libs.recyclerview
     implementation libs.itext
     implementation libs.gson
+    implementation libs.okhttp
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
-
 }

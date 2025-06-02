@@ -33,5 +33,5 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.kayakquest.Fragments.SettingsFragment"
-        android:label="Settings" />
+        android:label="Emergency" />
 </navigation>

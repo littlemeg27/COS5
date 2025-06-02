@@ -1,67 +1,59 @@
 package com.example.kayakquest.Fragments;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
-import com.example.kayakquest.Operations.MarkerData;
+import com.example.kayakquest.Operations.SelectedPinViewModel;
 import com.example.kayakquest.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import java.lang.reflect.Type;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback
 {
     private GoogleMap googleMap;
-    private List<MarkerData> markerList;
-    private static final String PREFS_NAME = "MapPrefs";
-    private static final String MARKERS_KEY = "Markers";
+    private SelectedPinViewModel viewModel;
+    private static final String TAG = "MapFragment";
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_map, container, false);
-        markerList = new ArrayList<>();
-        loadMarkers();
+
+        viewModel = new ViewModelProvider(requireActivity()).get(SelectedPinViewModel.class);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-
         if (mapFragment != null)
         {
-            Log.d("MapFragment", "Map fragment found, requesting map async");
             mapFragment.getMapAsync(this);
         }
         else
         {
-            Log.e("MapFragment", "Map fragment not found");
-            Toast.makeText(requireContext(), "Map fragment not found", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "Map fragment not found in layout");
         }
+
         return view;
     }
 
@@ -69,145 +61,101 @@ public class MapFragment extends Fragment implements OnMapReadyCallback
     public void onMapReady(@NonNull GoogleMap googleMap)
     {
         this.googleMap = googleMap;
-        Log.d("MapFragment", "Map ready, setting default location");
+
+        List<MarkerData> markers = loadMarkersFromJson(requireContext());
+        addMarkersToMap(markers);
 
         LatLng defaultLocation = new LatLng(35.227085, -80.843124);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 10));
-        Log.d("MapFragment", "Camera moved to: " + defaultLocation.latitude + ", " + defaultLocation.longitude);
 
-        List<MarkerData> prePopulatedMarkers = getPrePopulatedMarkers();
-
-        for (MarkerData markerData : prePopulatedMarkers)
-        {
-            googleMap.addMarker(new MarkerOptions()
-                    .position(markerData.getLatLng())
-                    .title(markerData.title)
-                    .snippet(markerData.snippet));
-        }
-        Log.d("MapFragment", "Added " + prePopulatedMarkers.size() + " pre-populated markers");
-
-        for (MarkerData markerData : markerList)
-        {
-            googleMap.addMarker(new MarkerOptions()
-                    .position(markerData.getLatLng())
-                    .title(markerData.title)
-                    .snippet(markerData.snippet));
-        }
-        Log.d("MapFragment", "Loaded " + markerList.size() + " user-added markers");
-
-        googleMap.setOnMapLongClickListener(latLng ->
-        {
-            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-            builder.setTitle("Add Person Pin");
-
-            final EditText input = new EditText(requireContext());
-            input.setInputType(InputType.TYPE_CLASS_TEXT);
-            builder.setView(input);
-
-            builder.setPositiveButton("OK", (dialog, which) ->
-            {
-                String personName = input.getText().toString().trim();
-
-                if (!personName.isEmpty())
-                {
-                    String formattedDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
-                    MarkerOptions markerOptions = new MarkerOptions()
-                            .position(latLng)
-                            .title(personName)
-                            .snippet("Added: " + formattedDate);
-                    googleMap.addMarker(markerOptions);
-
-                    MarkerData markerData = new MarkerData(latLng.latitude, latLng.longitude, personName, "Added: " + formattedDate);
-                    markerList.add(markerData);
-                    saveMarkers();
-
-                    Toast.makeText(requireContext(), "Person pin added for " + personName, Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                    Toast.makeText(requireContext(), "Please enter a name", Toast.LENGTH_SHORT).show();
-                }
-            });
-
-            builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
-            builder.show();
-        });
-
-        googleMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter()
-        {
-            @Override
-            public View getInfoWindow(@NonNull Marker marker)
-            {
-                return null;
-            }
-
-            @Override
-            public View getInfoContents(@NonNull Marker marker)
-            {
-                View view = LayoutInflater.from(requireContext()).inflate(R.layout.custom_info_window, null);
-                TextView title = view.findViewById(R.id.title);
-                TextView snippet = view.findViewById(R.id.snippet);
-                title.setText(marker.getTitle());
-                snippet.setText(marker.getSnippet());
-                return view;
-            }
-        });
-
-        googleMap.setOnMarkerClickListener(marker ->
-        {
-            marker.showInfoWindow();
-            return true;
+        googleMap.setOnMarkerClickListener(marker -> {
+            LatLng position = marker.getPosition();
+            viewModel.setSelectedPin(position);
+            Log.d(TAG, "Marker clicked at: " + position.latitude + "," + position.longitude);
+            return false;
         });
     }
 
-    private List<MarkerData> getPrePopulatedMarkers()
+    private List<MarkerData> loadMarkersFromJson(Context context)
     {
-        List<MarkerData> prePopulated = new ArrayList<>();
-        try
+        List<MarkerData> markers = new ArrayList<>();
+        try (InputStream inputStream = context.getAssets().open("prepopulated_markers.json"))
         {
-            InputStream inputStream = getResources().openRawResource(R.raw.prepopulated_markers);
-            byte[] buffer = new byte[inputStream.available()];
-            inputStream.read(buffer);
-            inputStream.close();
-            String json = new String(buffer, StandardCharsets.UTF_8);
+            Log.d(TAG, "Successfully opened prepopulated_markers.json");
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+            int totalBytes = 0;
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+                totalBytes += bytesRead;
+            }
+            Log.d(TAG, "Read " + totalBytes + " bytes from JSON file");
+            String json = outputStream.toString(StandardCharsets.UTF_8.name());
+            Log.d(TAG, "JSON content: " + json);
+            JSONArray jsonArray = new JSONArray(json);
+            Log.d(TAG, "JSON array length: " + jsonArray.length());
 
-            Gson gson = new Gson();
-            Type type = new TypeToken<ArrayList<MarkerData>>() {}.getType();
-            prePopulated = gson.fromJson(json, type);
-            Log.d("MapFragment", "Loaded " + prePopulated.size() + " pre-populated markers from JSON");
+            for (int i = 0; i < jsonArray.length(); i++)
+            {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String name = jsonObject.getString("name");
+                double latitude = jsonObject.getDouble("latitude");
+                double longitude = jsonObject.getDouble("longitude");
+                Log.d(TAG, "Parsed marker: " + name + " at (" + latitude + "," + longitude + ")");
+                markers.add(new MarkerData(name, latitude, longitude));
+            }
         }
         catch (IOException e)
         {
-            Log.e("MapFragment", "Error loading pre-populated markers", e);
+            Log.e(TAG, "IOException loading markers: " + e.getMessage(), e);
         }
-        return prePopulated;
+        catch (JSONException e)
+        {
+            Log.e(TAG, "JSONException parsing markers: " + e.getMessage(), e);
+        }
+        Log.d(TAG, "Returning " + markers.size() + " markers");
+        return markers;
     }
 
-    private void saveMarkers()
-    {
-        SharedPreferences prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(markerList);
-        editor.putString(MARKERS_KEY, json);
-        editor.apply();
-        Log.d("MapFragment", "Saved " + markerList.size() + " user-added markers");
+    private void addMarkersToMap(List<MarkerData> markers) {
+        if (googleMap == null) return;
+
+        for (MarkerData marker : markers)
+        {
+            LatLng position = new LatLng(marker.getLatitude(), marker.getLongitude());
+            googleMap.addMarker(new MarkerOptions()
+                    .position(position)
+                    .title(marker.getName()));
+        }
     }
 
-    private void loadMarkers()
+    private static class MarkerData
     {
-        SharedPreferences prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = prefs.getString(MARKERS_KEY, null);
-        Type type = new TypeToken<ArrayList<MarkerData>>() {}.getType();
-        if (json != null)
+        private final String name;
+        private final double latitude;
+        private final double longitude;
+
+        MarkerData(String name, double latitude, double longitude)
         {
-            markerList = gson.fromJson(json, type);
+            this.name = name;
+            this.latitude = latitude;
+            this.longitude = longitude;
         }
-        if (markerList == null)
+
+        String getName()
         {
-            markerList = new ArrayList<>();
+            return name;
         }
-        Log.d("MapFragment", "Loaded " + markerList.size() + " user-added markers from SharedPreferences");
+
+        double getLatitude()
+        {
+            return latitude;
+        }
+
+        double getLongitude()
+        {
+            return longitude;
+        }
     }
 }

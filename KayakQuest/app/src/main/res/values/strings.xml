@@ -50,6 +50,11 @@
     <string name="trip_notes_hint">Additional trip notes</string>
     <string name="submit">Submit</string>
     <string name="vehicle_model">Model</string>
+    <string name="_6_hour_forecast">6-Hour Forecast</string>
+    <string name="temperature_format">%d°C</string>
+    <string name="humidity_format">Humidity: %d%%</string>
+    <string name="wind_format">Wind: %d km/h</string>
+    <string name="pressure_format">Pressure: %d mb</string>
 
     <!-- Dropdown Arrays -->
     <string-array name="dropdown_gender">

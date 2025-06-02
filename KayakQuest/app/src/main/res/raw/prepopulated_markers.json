@@ -1,99 +1,9 @@
 [
   {
-    "latitude": 35.243,
-    "longitude": -81.004,
-    "title": "Catawba River Access",
-    "snippet": "Popular kayaking put-in point in Belmont"
-  },
-  {
-    "latitude": 35.462,
-    "longitude": -80.893,
-    "title": "Lake Norman",
-    "snippet": "Large lake for kayaking in Cornelius"
-  },
-  {
-    "latitude": 35.273,
-    "longitude": -81.004,
-    "title": "U.S. National Whitewater Center",
-    "snippet": "Kayaking and rafting hub"
-  },
-  {
-    "latitude": 36.343,
-    "longitude": -75.952,
-    "title": "Intercoastal Waterway",
-    "snippet": "Official NC Fish and Wildlife public boat access"
-  },
-  {
-    "latitude": 35.943,
-    "longitude": -83.813,
-    "title": "French Broad River",
-    "snippet": "French Broad River is a captivating natural wonder that flows gracefully through the picturesque landscape of the region"
-  },
-  {
-    "latitude": 33.406,
-    "longitude": -79.8627892936,
-    "title": "St. Stephens",
-    "snippet": "Berkeley County Blueway"
-  },
-  {
-    "latitude": 35.338,
-    "longitude": -82.206,
-    "title": "Lake Adger",
-    "snippet": "Public Access area to fish at Lake Adger in Mill Spring"
-  },
-  {
-    "latitude": 34.229,
-    "longitude": -77.893,
-    "title": "Ann McCarry Park",
-    "snippet": "Cute little watershed, easy launch point off of Randall Drive, Not a very large body of water, but nice scenery for a quick paddle."
-  },
-  {
-    "latitude": 33.122,
-    "longitude": -84.519,
-    "title": "Flint River",
-    "snippet": "White Oak Creek Boat Ramp"
-  },
-  {
-    "latitude": 34.877,
-    "longitude": -82.489,
-    "title": "Finns Landing, Saluda Lake",
-    "snippet": "This super quiet and calm body of water is home to a small island, a dam, beautiful rock formations, lakefront homes and a myriad of wildlife including birds and turtles."
-  },
-  {
-    "latitude": 33.1547081294,
-    "longitude": -86.4938880713,
-    "title": "Lay Lake",
-    "snippet": "Paradise Point Marina (PPM) is the only full-service marina on Lay Lake in central Alabama"
-  },
-  {
-    "latitude": 35.791,
-    "longitude": -84.690,
-    "title": "Watts Bar Lake",
-    "snippet": "Watts Bar Lake is a reservoir on the Tennessee River created by Watts Bar Dam"
-  },
-  {
-    "latitude": 35.555,
-    "longitude": -83.989,
-    "title": "Panther Creek",
-    "snippet": "Panther Creek State Park is a 1,444-acre park located on the Cherokee Reservoir in the historic Holston River Valley"
-  },
-  {
-    "latitude": 36.399,
-    "longitude": -76.750,
-    "title": "Gatesville Creekside Park",
-    "snippet": "Really nice, clean launch area, flat water."
-  },
-  {
-    "latitude": 35.882,
-    "longitude": -77.895,
-    "title": "Tar River Reservoir",
-    "snippet": "The Tar River Reservoir is sampled at the reservoir boat ramp off of Bend of the River Road"
-  },
-  {
-    "latitude": 35.884,
-    "longitude": -77.905,
-    "title": "Tar River",
-    "snippet": "Rocky Mount on the Tar River Paddle Trail"
+    "latitude": 35.1557,
+    "longitude": -81.0122,
+    "title": "LAKE WYLIE (CATAWBA RESERVOIR), SOUTH POINT",
+    "snippet": "South Point Launch on Lake Wylie provides access to the northeast arm of the lake, making it a popular spot for paddling and water recreation"
   },
   {
     "latitude": 35.1557,
@@ -208,5 +118,35 @@
     "longitude": -81.4424,
     "title": "LAKE RHODHISS, RHODHISS",
     "snippet": "Lake Rhodhiss is a pristine lake located at the foothills of the Blue Ridge Mountains in Western North Carolina."
+  },
+  {
+    "latitude": 35.7840,
+    "longitude": -81.4847,
+    "title": "LAKE RHODHISS, CONLEY CREEK",
+    "snippet": "Lake Rhodhiss is a pristine lake located at the foothills of the Blue Ridge Mountains in Western North Carolina."
+  },
+  {
+    "latitude": 35.7819,
+    "longitude": -81.5244,
+    "title": "LAKE RHODHISS, CASTLE BRIDGE",
+    "snippet": "Lake Rhodhiss is a pristine lake located at the foothills of the Blue Ridge Mountains in Western North Carolina."
+  },
+  {
+    "latitude": 35.7931,
+    "longitude": -81.6767,
+    "title": "JOHNS RIVER",
+    "snippet": "With 5 miles of frontage on the Johns River, there are plenty of places to enjoy a lazy summer afternoon or one of our warm winter days."
+  },
+  {
+    "latitude": 35.7277,
+    "longitude": -81.8109,
+    "title": "CATAWBA RIVER, NORTH BEND",
+    "snippet": "The 'North Bend' referenced in the context of the Catawba River near Morganton, NC,"
+  },
+  {
+    "latitude": 35.7930,
+    "longitude": -81.8690,
+    "title": "LAKE JAMES, LINVILLE RIVER",
+    "snippet": "The 'North Bend' referenced in the context of the Catawba River near Morganton, NC,"
   }
 ]
